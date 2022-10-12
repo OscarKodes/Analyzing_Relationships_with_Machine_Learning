@@ -1,0 +1,143 @@
+@media screen and (min-width: 1080px) {
+
+    /* For laptop and desktop sizes */
+    html {
+        /* font-size: 62.5%; */
+        font-size: 8px;
+    }
+}
+
+@media screen and (max-width: 1079px) {
+
+    /* For mobile and tablet sizes */
+    /* html {
+        font-size: 120%;
+    } */
+}
+
+
+body {
+    background-color: #e4b7b7;
+    margin: 0;
+}
+
+p,
+.bullet-list {
+    line-height: 1.65;
+    color: #444;
+}
+
+.bullet-list {
+    font-size: 1.8rem;
+}
+
+p {
+    padding: 1.5rem 2.5rem;
+    text-align: justify;
+    font-size: 1.65rem;
+}
+
+
+.bullet-list {
+    width: 50rem;
+    margin: 0 auto 2rem;
+    padding: 1rem;
+    font-size: 1.65rem;
+    border: 2px #DDD dotted;
+}
+
+@media screen and (min-width: 1080px) {
+
+    /* For laptop and desktop sizes */
+    .bullet-list {
+        width: 50rem;
+        margin: 0 auto 2rem;
+        padding: 1rem;
+        font-size: 2rem;
+        border: 2px #DDD dotted;
+    }
+}
+
+h1 {
+    margin: 0;
+    font-size: 4.5rem;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+h1,
+h2 {
+    padding-top: 2.5rem;
+    text-align: center;
+}
+
+@media screen and (min-width: 1080px) {
+
+    /* For laptop and desktop sizes */
+    p {
+        line-height: 1.85;
+        color: #444;
+        font-size: 2.5rem;
+        padding: 1.5rem 2.5rem;
+        width: 700px;
+        margin: 2rem auto 3rem;
+    }
+
+    h1 {
+        font-size: 5.25rem;
+    }
+
+    h2 {
+        font-size: 3.75rem;
+    }
+}
+
+/* MAIN CONTAINER */
+#main-container {
+    max-width: 1080px;
+    margin: 0 auto;
+    box-shadow: 0 1rem 1.5rem 0 #333333;
+    background-color: white;
+    padding: 2rem;
+
+}
+
+#cover-img {
+    width: 912px;
+    margin: 2.5rem auto 0;
+}
+
+@media screen and (min-width: 1080px) {
+
+    /* For laptop and desktop sizes */
+    #cover-img {
+        width: 50%;
+    }
+}
+
+#cover-img img {
+    width: 100%;
+}
+
+
+.section {
+    margin: 2.5rem 0;
+    border: 2px solid black
+}
+
+.by-line {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: steelblue;
+}
+
+#bottom-link {
+    text-align: center;
+    font-size: 2.1rem;
+    padding-bottom: 3rem;
+}
