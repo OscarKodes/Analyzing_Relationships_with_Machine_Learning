@@ -1,0 +1,9 @@
+feature,coef
+householdIncome,0.3134
+isLivingTogether_Yes,0.8388
+metAs_coworkers_yes,-0.6509
+partnerAge,0.4386
+partnerMotherEduc_years,0.276
+sexFrequency_3_to_6_times_a_week,0.7093
+sexFrequency_Once_a_month_or_less,-0.712
+sexFrequency_Once_or_twice_a_week,0.6962

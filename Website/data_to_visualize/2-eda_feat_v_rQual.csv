@@ -1,0 +1,13 @@
+feature,Pearsons_r,p_val
+householdIncome,0.102004,0
+subjectAge,0.099504,0
+partnerEduc_years,0.088878,0
+partnerAge,0.085148,0.0001
+subjectEduc_years,0.074172,0.0007
+partnerMotherEduc_years,0.069184,0.0016
+met_YearFraction,-0.118335,0
+shipStart_YearFraction,-0.10932,0
+householdMinor_num,-0.075959,0.0005
+householdSize,-0.060212,0.0059
+subjectParty_DemPos_RepNeg,-0.058733,0.0073
+ageGap,-0.053706,0.0142

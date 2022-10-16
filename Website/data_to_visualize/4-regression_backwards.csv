@@ -1,0 +1,12 @@
+feature,coef
+householdIncome,0.0662
+householdMinor_num,-0.0728
+isLivingTogether_Yes,0.4595
+metAs_workNeighbors_yes,0.3042
+metIn_school_yes,0.1611
+partnerRace_Asian or Pacific Islander,0.1827
+partnerRace_White,0.2158
+sexFrequency_3 to 6 times a week,0.2075
+sexFrequency_Once a month or less,-0.2096
+sexFrequency_Once or twice a week,0.1001
+whoEarnedMore_We earned about the same amount,0.1034
