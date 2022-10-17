@@ -1,0 +1,56 @@
+notebook,name,score
+1-eda,met_YearFraction~~shipStart_YearFraction,0.964212
+1-eda,partnerAge~~subjectAge,0.926556
+1-eda,householdSize~~householdMinor_num,0.78371
+1-eda,householdAdults_num~~householdSize,0.69748
+1-eda,partnerParty_DemPos_RepNeg~~subjectParty_DemPos_RepNeg,0.662116
+1-eda,subjectAgeWhenMet~~timesDivorcedOrWidowed,0.529973
+1-eda,subjectEduc_years~~partnerEduc_years,0.516242
+1-eda,subjectEduc_years~~householdIncome,0.439751
+1-eda,subjectAgeWhenMet~~ageGap,0.42233
+1-eda,met_YearFraction~~subjectAgeWhenMet,0.385014
+1-eda,partnerEduc_years~~householdIncome,0.37312
+1-eda,partnerMotherEduc_years~~subjectMotherEduc_years,0.339587
+1-eda,subjectAgeWhenMet~~met_to_shipStart_diff,-0.211593
+1-eda,subjectAge~~partnerMotherEduc_years,-0.209677
+1-eda,partnerAge~~partnerMotherEduc_years,-0.206991
+1-eda,subjectAgeWhenMet~~householdSize,-0.204729
+1-eda,met_to_shipStart_diff~~met_YearFraction,-0.184173
+1-eda,subjectAgeWhenMet~~householdAdults_num,-0.163909
+1-eda,householdMinor_num~~subjectAgeWhenMet,-0.142147
+1-eda,householdIncome~~shipStart_YearFraction,-0.12272
+1-eda,met_YearFraction~~relationshipQuality_isGood,-0.118335
+1-eda,householdIncome~~met_YearFraction,-0.117063
+1-eda,subjectAge~~subjectParty_DemPos_RepNeg,-0.112435
+1-eda,shipStart_YearFraction~~relationshipQuality_isGood,-0.10932
+2-eda,householdIncome,0.102004
+2-eda,subjectAge,0.099504
+2-eda,partnerEduc_years,0.088878
+2-eda,partnerAge,0.085148
+2-eda,subjectEduc_years,0.074172
+2-eda,partnerMotherEduc_years,0.069184
+2-eda,met_YearFraction,-0.118335
+2-eda,shipStart_YearFraction,-0.10932
+2-eda,householdMinor_num,-0.075959
+2-eda,householdSize,-0.060212
+2-eda,subjectParty_DemPos_RepNeg,-0.058733
+2-eda,ageGap,-0.053706
+3-class,householdIncome,0.3134
+3-class,isLivingTogether_Yes,0.8388
+3-class,metAs_coworkers_yes,-0.6509
+3-class,partnerAge,0.4386
+3-class,partnerMotherEduc_years,0.276
+3-class,sexFrequency_3_to_6_times_a_week,0.7093
+3-class,sexFrequency_Once_a_month_or_less,-0.712
+3-class,sexFrequency_Once_or_twice_a_week,0.6962
+4-reg,householdIncome,0.0662
+4-reg,householdMinor_num,-0.0728
+4-reg,isLivingTogether_Yes,0.4595
+4-reg,metAs_workNeighbors_yes,0.3042
+4-reg,metIn_school_yes,0.1611
+4-reg,partnerRace_Asian or Pacific Islander,0.1827
+4-reg,partnerRace_White,0.2158
+4-reg,sexFrequency_3 to 6 times a week,0.2075
+4-reg,sexFrequency_Once a month or less,-0.2096
+4-reg,sexFrequency_Once or twice a week,0.1001
+4-reg,whoEarnedMore_We earned about the same amount,0.1034
