@@ -1,3 +1,31 @@
-,partnerMotherEduc_years,partnerRace_White,partnerAge,sexFrequency_Once a month or less,isLivingTogether_Yes,metAs_coworkers_yes,relationshipQuality_isGood,sexFrequency_Once or twice a week,householdIncome,partnerRace_Asian or Pacific Islander,whoEarnedMore_We earned about the same amount,sexFrequency_3 to 6 times a week,metIn_school_yes,metAs_workNeighbors_yes,householdMinor_num
-Component 0,0.3074729526601232,-0.0475790937693078,-0.7151215417003327,-0.13159870279455516,-0.05715555915682294,-0.02041024200363692,-0.02147719491461108,0.05538048218801366,-0.14975090137418817,0.007400232862726173,-0.0051522942839404215,0.0692508838240314,0.01837930936161048,-0.0036161751567723027,0.5827647629331721
-Component 1,0.6761741577084281,0.04614570137662244,0.013960719756669904,0.01669793736038116,0.025732511036541193,0.0031707550754376916,0.031513348527286246,0.00869549186305833,0.7196246017763988,0.004481448294243601,-0.004143799462057292,-0.022638762996604132,-0.003537534317566853,0.0028818197030022214,-0.14147185868187148
+component,feature,score
+0,partnerMotherEduc_years,0.307472953
+0,partnerRace_White,-0.047579094
+0,partnerAge,-0.715121542
+0,sexFrequency_Once a month or less,-0.131598703
+0,isLivingTogether_Yes,-0.057155559
+0,metAs_coworkers_yes,-0.020410242
+0,relationshipQuality_isGood,-0.021477195
+0,sexFrequency_Once or twice a week,0.055380482
+0,householdIncome,-0.149750901
+0,partnerRace_Asian or Pacific Islander,0.007400233
+0,whoEarnedMore_We earned about the same amount,-0.005152294
+0,sexFrequency_3 to 6 times a week,0.069250884
+0,metIn_school_yes,0.018379309
+0,metAs_workNeighbors_yes,-0.003616175
+0,householdMinor_num,0.582764763
+1,partnerMotherEduc_years,0.676174158
+1,partnerRace_White,0.046145701
+1,partnerAge,0.01396072
+1,sexFrequency_Once a month or less,0.016697937
+1,isLivingTogether_Yes,0.025732511
+1,metAs_coworkers_yes,0.003170755
+1,relationshipQuality_isGood,0.031513349
+1,sexFrequency_Once or twice a week,0.008695492
+1,householdIncome,0.719624602
+1,partnerRace_Asian or Pacific Islander,0.004481448
+1,whoEarnedMore_We earned about the same amount,-0.004143799
+1,sexFrequency_3 to 6 times a week,-0.022638763
+1,metIn_school_yes,-0.003537534
+1,metAs_workNeighbors_yes,0.00288182
+1,householdMinor_num,-0.141471859
