@@ -26,7 +26,7 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
 
     const yScale = d3.scaleLinear()
         .domain([-4, 4])
-        .range([margin, height - margin]);
+        .range([height - margin, margin]);
 
     const allColors = ["black", "grey", "yellow"];
 
