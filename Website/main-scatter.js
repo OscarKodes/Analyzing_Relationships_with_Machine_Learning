@@ -1,8 +1,12 @@
 
 /* CONSTANTS AND GLOBALS */
-const width = window.innerWidth * .8;
-const height = 600;
-const margin = 80;
+const width = window.innerWidth * .92;
+const height = 1050;
+const margin = {
+  top: 80,
+  left: 85,
+  right: 35
+};
 
 const pastel1Colors = d3.scaleOrdinal(d3.schemePastel1);
 const pastel2Colors = d3.scaleOrdinal(d3.schemePastel2);
@@ -21,12 +25,12 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
 
     const xScale = d3.scaleLinear()
         .domain([-4, 4])
-        .range([0, width - margin * 3])
+        .range([0, width - margin.right * 3])
         .nice()
 
     const yScale = d3.scaleLinear()
         .domain([-4, 4])
-        .range([height - margin, margin]);
+        .range([height - margin.top, margin.top]);
 
     const allColors = ["black", "grey", "yellow"];
 
@@ -47,21 +51,21 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
       .append("svg")
       .attr("width", width)
       .attr("height", height)
-    //   .style("background-color", "powderblue")
+      // .style("background-color", "lavender")
 
 
     // AXIS TICKS  ----------------------------------------------
       
     // xAxis ticks
     svg.append("g")
-      .attr("transform", `translate(${margin}, ${height - margin})`)
-      .style("font-size", "0.8rem")
+      .attr("transform", `translate(${margin.left}, ${height - margin.top})`)
+      .style("font-size", "2rem")
       .call(xAxis);
 
     // yAxis ticks
     svg.append("g")
-      .attr("transform", `translate(${margin}, 0)`)
-      .style("font-size", "0.8rem")
+      .attr("transform", `translate(${margin.left}, 0)`)
+      .style("font-size", "2rem")
       .call(yAxis);
 
     
@@ -75,12 +79,13 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
             enter => enter
             .append("circle")
                 .attr("class", "dot")
-                .attr("transform", d => `translate(${xScale(d.comp0) + margin / 2}, 
+                .attr("transform", d => `translate(${xScale(d.comp0) + margin.left / 2}, 
                                         ${yScale(d.comp1)})`)
-                .attr("r", 3.25)
+                .attr("r", 8)
                 .attr("fill", d => colorScale(d.relationshipQuality_isGood))
-                .attr("stroke", "grey")
-                .attr("opacity", "0.4")
+                .attr("stroke", "black")
+                .attr("stroke-width", "1px")
+                .attr("fill-opacity", ".65")
                 // .on("mouseover", tipMouseover)
                 // .on("mouseout", tipMouseout)
             // .call(enter => enter.transition()
@@ -100,4 +105,22 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
             //     .attr("r", 0))
                 .remove()
         );
+
+                        // yAxis title
+    svg.append("text")
+    .attr("y", margin.top / 3)
+    .attr("x", -margin.left * 8)
+    .attr("transform", "rotate(-90)")
+    .style("font-weight", "bold")
+    .style("font-size", "2.2rem")
+    .text("Component 1")
+
+    // xAxis title
+    svg.append("text")
+    .attr("text-anchor", "end")
+    .attr("x", width - margin.left * 4)
+    .attr("y", height - margin.top / 8)
+    .style("font-weight", "bold")
+    .style("font-size", "2.2rem")
+    .text("Component 0");
 });
