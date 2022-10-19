@@ -1,7 +1,7 @@
 
 /* CONSTANTS AND GLOBALS */
 const width = window.innerWidth * .9;
-const height = 2200;
+let height = 2200;
 const margin = {
   top: 100,
   left: 250
@@ -133,6 +133,17 @@ function init() {
   // Listen for user changes on menu and call draw
   selectMenu.on("change", event => {
     state.notebook = event.target.value;
+
+    // clears out xAxis title, so it doesn't overlap
+    d3.select(".xAxis-title").remove();
+
+
+    // // Adjusts height based on notebook
+    // height = state.notebook > 1 ? 1500 : 2200;
+    // svg.attr("height", height)
+    // // remember to fix the x and y scales so they update 
+    // // (use basketball vis as reference)
+
     draw();
   });
 
@@ -335,6 +346,7 @@ function draw() {
         .attr("text-anchor", "end")
         .attr("x", width - margin.left * 1.5)
         .attr("y", height - margin.top * .5)
+        .attr("class", "xAxis-title")
         .style("font-weight", "bold")
         .style("font-size", "2rem")
         .text(`${state.notebook < 3 ? "Pearson's R" : "Coefficient"}`);
