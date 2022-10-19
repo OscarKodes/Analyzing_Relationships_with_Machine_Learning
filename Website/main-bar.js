@@ -277,9 +277,19 @@ function draw() {
         .attr("x", d => d.score > 0 ?
                             xScale(0) + margin.left - 10:
                             xScale(0) + margin.left + 10)
-        .attr("y", d => yScale(d.name) + yScale.bandwidth() / 3 + 10)
+        .attr("y", d => yScale(d.name) + yScale.bandwidth() / 3 + 6)
         .attr("opacity", 1)
-        .text(d => `${d.name.split("~~")[0]}`),
+        .text(d => {
+          
+          let feat1 = `${d.name.split("~~")[0]}`;
+          let tail = "_DemPos_RepNeg";
+
+          if (feat1.indexOf(tail)) {
+            feat1 = feat1.replace(tail, "");
+          }
+
+          return feat1;
+        }),
         update => update,
         exit => exit
             .call(exit => exit.transition()
@@ -301,7 +311,17 @@ function draw() {
                             xScale(0) + margin.left + 10)
         .attr("y", d => yScale(d.name) + yScale.bandwidth() / 1.35 + 10)
         .attr("opacity", 1)
-        .text(d => `${d.name.split("~~")[1]}`),
+        .text(d => {
+          
+          let feat2 = `${d.name.split("~~")[1]}`;
+          let tail = "_DemPos_RepNeg";
+
+          if (feat2.indexOf(tail)) {
+            feat2 = feat2.replace(tail, "");
+          }
+
+          return feat2;
+        }),
         update => update,
         exit => exit
             .call(exit => exit.transition()

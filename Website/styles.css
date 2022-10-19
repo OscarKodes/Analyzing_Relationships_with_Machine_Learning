@@ -35,6 +35,8 @@ p {
     padding: 1.5rem 2.5rem;
     text-align: justify;
     font-size: 1.65rem;
+    display: table;
+    /* this disables chrome's mobile "simplify text" view */
 }
 
 
