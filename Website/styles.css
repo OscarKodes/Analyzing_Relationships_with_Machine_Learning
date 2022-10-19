@@ -127,6 +127,26 @@ h2 {
     border: 2px solid black
 }
 
+#dropdown-container {
+    width: 50%;
+    margin: 1rem auto 3rem;
+}
+
+#dropdown {
+    font-size: 3.5rem;
+    text-align: center;
+    width: 100%;
+    border: #333333 2px solid;
+}
+
+#dropdown option {
+    font-size: 1.25rem;
+}
+
+.vis {
+    text-align: center;
+}
+
 .by-line {
     text-align: center;
 }

@@ -1,8 +1,11 @@
 
 /* CONSTANTS AND GLOBALS */
-const width = window.innerWidth * .8;
-const height = 600;
-const margin = 100;
+const width = window.innerWidth * .9;
+const height = 2200;
+const margin = {
+  top: 100,
+  left: 250
+};
 
 const pastel1Colors = d3.scaleOrdinal(d3.schemePastel1);
 const pastel2Colors = d3.scaleOrdinal(d3.schemePastel2);
@@ -53,12 +56,12 @@ function init() {
     // SCALES =================================================
     xScale = d3.scaleLinear()
       .domain(d3.extent(filtered_data, d => d.score))
-      .range([0, width - margin / 2])
+      .range([0, width - margin.left * 1.25])
       .nice()
 
     yScale = d3.scaleBand()
       .domain(filtered_data.map(d => d.name))
-      .range([0, height - margin])
+      .range([0, height - margin.top])
       .paddingInner(.2)
       .paddingOuter(.1)
 
@@ -83,6 +86,7 @@ function init() {
       .append("svg")
       .attr("width", width)
       .attr("height", height)
+      // .style("background-color", "lavender");
 
     // + CALL AXES
     xAxisGroup = svg.select(".x-axis")
@@ -114,12 +118,12 @@ function init() {
 
     // yAxis title
     svg.append("text")
-      .attr("y", margin / 8)
-      .attr("x", -margin * 2.5)
+      .attr("y", margin.top / 3)
+      .attr("x", -margin.left * 3.5)
       .attr("transform", "rotate(-90)")
       .style("font-weight", "bold")
-      .style("font-size", "1.1rem")
-      .text("Features");
+      .style("font-size", "2.5rem")
+      .text("Features")
 
   // USER INTERFACE SETUP FOR VIS OPTIONS ===================
 
@@ -227,7 +231,7 @@ function draw() {
                                 0 : -(xScale(0) - xScale(d.score)))
                 .attr("y", d => yScale(d.name))
                 .attr("fill", d => colorScale(d.score > 0))
-                .attr("transform", `translate(${margin + xScale(0)}, 0)`)
+                .attr("transform", `translate(${margin.left + xScale(0)}, 0)`)
                 .attr("stroke", "grey")
               .call(enter => enter.transition()
               ),
@@ -245,12 +249,14 @@ function draw() {
             enter => enter
               .append("text")
                 .attr("class", "bar-nums")
+                .style("font-size", "2rem")
                 .attr("x", d => d.score > 0 ?
-                                xScale(d.score) + margin + 10 :
-                                -(xScale(0) - xScale(d.score)) + margin * 2 + 40)
-                .attr("y", d => yScale(d.name) + yScale.bandwidth() / 2 + 2)
+                                xScale(d.score) + margin.left + 10 :
+                                -(xScale(0) - xScale(d.score)) + margin.left * 1.2)
+                .attr("y", d => yScale(d.name) + yScale.bandwidth() / 2 + 10)
                 .attr("opacity", 1)
-                .text(d => d.score).call(enter => enter.transition()
+                .text(d => Math.round(d.score * 100) / 100)
+                .call(enter => enter.transition()
             ),
             update => update,
             exit => exit
@@ -267,12 +273,13 @@ function draw() {
               .append("text")
         .attr("class", "feature_name")
         .style("text-anchor", d => d.score > 0 ? "end" : "start")
+        .style("font-size", "1.8rem")
         .attr("x", d => d.score > 0 ?
-                            xScale(0) + margin - 10:
-                            xScale(0) + margin + 10)
-        .attr("y", d => yScale(d.name) + yScale.bandwidth() / 2 + 2)
+                            xScale(0) + margin.left - 10:
+                            xScale(0) + margin.left + 10)
+        .attr("y", d => yScale(d.name) + yScale.bandwidth() / 3 + 10)
         .attr("opacity", 1)
-        .text(d => `${d.name}`),
+        .text(d => `${d.name.split("~~")[0]}`),
         update => update,
         exit => exit
             .call(exit => exit.transition()
@@ -280,13 +287,36 @@ function draw() {
             )
     );
 
+    // yAxis Feature names
+      svg.selectAll(".feature_name2")
+        .data(filtered_data, d => d.notebook + d.name)
+        .join(
+            enter => enter
+              .append("text")
+        .attr("class", "feature_name2")
+        .style("text-anchor", d => d.score > 0 ? "end" : "start")
+        .style("font-size", "1.8rem")
+        .attr("x", d => d.score > 0 ?
+                            xScale(0) + margin.left - 10:
+                            xScale(0) + margin.left + 10)
+        .attr("y", d => yScale(d.name) + yScale.bandwidth() / 1.35 + 10)
+        .attr("opacity", 1)
+        .text(d => `${d.name.split("~~")[1]}`),
+        update => update,
+        exit => exit
+            .call(exit => exit.transition()
+            .remove()
+            )
+    );
+
+
     // xAxis title
     svg.append("text")
         .attr("text-anchor", "end")
-        .attr("x", (width / 2) + margin)
-        .attr("y", height - margin * .5)
+        .attr("x", width - margin.left * 1.5)
+        .attr("y", height - margin.top * .5)
         .style("font-weight", "bold")
-        .style("font-size", "1.1rem")
+        .style("font-size", "2rem")
         .text(`${state.notebook < 3 ? "Pearson's R" : "Coefficient"}`);
 };
 
