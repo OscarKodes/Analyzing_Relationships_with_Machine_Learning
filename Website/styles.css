@@ -163,3 +163,11 @@ a {
     font-size: 2.1rem;
     padding-bottom: 3rem;
 }
+
+#table-container {
+    font-size: 1.5rem;
+}
+
+.highlight {
+    background-color: rgba(255, 255, 0, 0.377);
+}
