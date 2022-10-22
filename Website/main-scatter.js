@@ -18,8 +18,6 @@ const schemeSet3Colors = d3.scaleOrdinal(d3.schemeSet3);
 d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
     .then(data => {
 
-    console.log(data)
-
 
     // SCALES =================================================
 

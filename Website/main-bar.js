@@ -1,19 +1,15 @@
 
-/* CONSTANTS AND GLOBALS */
-const width = window.innerWidth * .9;
-let height = 2200;
-const margin = {
+// CONSTANTS AND GLOBALS #########################################
+
+const width = window.innerWidth * .92;
+
+// Change height & margin change based on selected notebook
+let height = 1800;
+let margin = {
   top: 100,
-  left: 250
+  left: 200
 };
 
-const pastel1Colors = d3.scaleOrdinal(d3.schemePastel1);
-const pastel2Colors = d3.scaleOrdinal(d3.schemePastel2);
-const accentColors = d3.scaleOrdinal(d3.schemeAccent);
-const schemeSet3Colors = d3.scaleOrdinal(d3.schemeSet3);
-
-
-// Variables to be assigned in init() and used in draw()
 let svg, 
 xScale, 
 yScale, 
@@ -22,6 +18,7 @@ yAxis,
 colorScale,
 xAxisGroup,
 yAxisGroup;
+
 
 // APPLICATION STATE #########################################
 let state = {
@@ -52,7 +49,6 @@ function init() {
         .sort((a, b) => b.score - a.score);
 
 
-
     // SCALES =================================================
     xScale = d3.scaleLinear()
       .domain(d3.extent(filtered_data, d => d.score))
@@ -69,16 +65,6 @@ function init() {
         .domain(filtered_data.map(d => d.score > 0))
         .range(["#C1E1C1", "#FAA0A0"]);
 
-    // // AXIS
-    // xAxis = d3.axisBottom()
-    //   .scale(xScale);
-
-    // yAxis = d3.axisLeft()
-    //   .scale(yScale);
-
-
-
-    
 
 
     // CREATE MAIN SVG ELEMENT ==================================
@@ -86,148 +72,100 @@ function init() {
       .append("svg")
       .attr("width", width)
       .attr("height", height)
-      // .style("background-color", "lavender");
+      .style("background-color", "lavender");
 
-    // + CALL AXES
-    xAxisGroup = svg.select(".x-axis")
-        // .attr("transform", `translate(${50}, ${heightForVis1 - margin.bottom})`)
+
+    // AXIS TICKS ==================================
+
+    xAxisGroup = svg.append("g")
+        .attr("transform", `translate(${margin.left}, ${height - margin.top})`)
+        .style("font-size", "1.5rem")
         .call(d3.axisBottom(xScale));
 
-    yAxisGroup = svg.select(".y-axis")
-        // .attr("transform", `translate(${margin.right}, ${0})`)
-        .call(d3.axisLeft(yScale));
-
-      
-    // AXIS TICKS  ----------------------------------------------
-      
-    // // xAxis ticks
-    // svg.append("g")
-    //   .attr("transform", `translate(${margin}, ${height - margin})`)
-    //   .style("font-size", "0.8rem")
-    //   .call(xAxis);
-
-    // // yAxis ticks
-    // svg.append("g")
-    //   .attr("transform", `translate(${xScale(0) + margin}, 0)`)
-    //   .style("font-size", "0.8rem")
-    //   .call(yAxis);
+    // yAxisGroup = svg.append("g")
+    //     .attr("transform", `translate(${100}, ${100})`)
+    //     .call(d3.axisLeft(yScale));
 
 
-
-    // AXIS LABELS ----------------------------------------------
-
-    // yAxis title
-    svg.append("text")
-      .attr("y", margin.top / 3)
-      .attr("x", -margin.left * 3.5)
-      .attr("transform", "rotate(-90)")
-      .style("font-weight", "bold")
-      .style("font-size", "2.5rem")
-      .text("Features")
 
   // USER INTERFACE SETUP FOR VIS OPTIONS ===================
 
-  // Grab elements for listeners and values
+  // Grab the dropdown menu
   const selectMenu = d3.select("#dropdown");
 
   // Listen for user changes on menu and call draw
   selectMenu.on("change", event => {
     state.notebook = event.target.value;
 
-    // clears out xAxis title, so it doesn't overlap
-    d3.select(".xAxis-title").remove();
+    // Update this vis only if unsupervised not selected
+    if (state.notebook < 5) {
+
+      // clears out xAxis title, so it doesn't overlap
+      d3.select(".xAxis-title").remove();
+      d3.select(".yAxis-title").remove();
 
 
-    // // Adjusts height based on notebook
-    // height = state.notebook > 1 ? 1500 : 2200;
-    // svg.attr("height", height)
-    // // remember to fix the x and y scales so they update 
-    // // (use basketball vis as reference)
+      // Adjusts height based on notebook
+      height = state.notebook > 1 ? 1000 : 1800;
+      svg.attr("height", height)
 
-    draw();
+      // Adjust margin based on notebook
+      margin.left = state.notebook > 1 ? 110: 200;
+
+
+      draw();
+    }
   });
 
   // Call draw function once Init() is finished for the first time
   draw(); 
 }
 
+
 // DRAW FUNCTION ####################################################
 function draw() {
 
-    // FILTER DATA =======================
+  // FILTER DATA =======================
 
-    let filtered_data = state.data
-        .filter(d => d.notebook[0] === String(state.notebook))
-        .sort((a, b) => b.score - a.score);
-
-    console.log(filtered_data);
+  let filtered_data = state.data
+    .filter(d => d.notebook[0] === String(state.notebook))
+    .sort((a, b) => b.score - a.score);
 
 
-    // + UPDATE SCALE(S), if needed
-    xScale.domain(d3.extent(filtered_data, d => d.score)).nice()
-    console.log(d3.extent(filtered_data, d => d.score))
+  // UPDATE SCALES =====================
 
-    yScale.domain(filtered_data.map(d => d.name))
+  xScale = d3.scaleLinear()
+    .domain(d3.extent(filtered_data, d => d.score))
+    .range([0, width - margin.left * 1.25])
+    .nice()
 
-    // + UPDATE AXIS/AXES, if needed
-    yAxisGroup
-      .transition()
-      .duration(1000)
-      .call(d3.axisLeft(yScale))// need to udpate the scale
+  yScale = d3.scaleBand()
+    .domain(filtered_data.map(d => d.name))
+    .range([0, height - margin.top])
+    .paddingInner(.2)
+    .paddingOuter(.1)
 
-    xAxisGroup
-      .transition()
-      .duration(1000)
-      .call(d3.axisBottom(xScale))// need to udpate the scale
+  // xScale.domain(d3.extent(filtered_data, d => d.score)).nice()
 
-//   // Tooltip Handling =============================================
-//   const tooltip = d3.select("#tooltip");
+  // yScale.domain(filtered_data.map(d => d.name))
 
-//   // Tooltip Mouseover 
-//   const tipMouseover = function(event, d) {
 
-//     const tooltipHTML = `<b>Title:</b> ${d.Film}<br/>
-//                           <b>Genre:</b> ${d.Genre}</span><br/>
-//                           <b>Rotten Tomatoes:</b> ${d["Rotten Tomatoes Ratings %"]}%<br/>
-//                           <b>Audience Ratings:</b> ${d["Audience Ratings %"]}%<br/> 
-//                           <b>Budget:</b> $${d["Budget (million $)"]} million (USD)<br>
-//                           <b>Year:</b> ${d["Year of release"]}`;
+  // UPDATE AXES ======================
+  // yAxisGroup
+  //   .transition()
+  //   .duration(500)
+  //   .call(d3.axisLeft(yScale))// need to update the scale
 
-//     let color = colorScale(d.Genre);
-//     let size = sizeScale(d["Budget (million $)"]);
+  xAxisGroup
+    .transition()
+    .duration(500)
+    .attr("transform", `translate(${margin.left}, ${height - margin.top})`)
+    .call(d3.axisBottom(xScale))// need to update the scale
 
-//     tooltip.html(tooltipHTML)
-//       .style("left", ((d.Film.length >= 20 ? // Dynamic positioning if long film title
-//                         event.pageX - 160 - ((d.Film.length - 19) * 5) : 
-//                         event.pageX - 160) + "px"))  
-//       .style("top", (event.pageY - 120 - 0.5 * size + "px"))
-//       .style("border", `${color} solid 0.2rem`) // Same border color as genre
-//       .style("outline", "1px solid black")
-//       .transition()
-//         .duration(100) 
-//         .style("opacity", .85) 
 
-//     d3.select(this)
-//       .transition()
-//       .duration(100)
-//       .style("opacity", 1);
-//   };
+  // DRAW ==========================================
 
-//   // Tooltip Mouseout
-//   const tipMouseout = function(d) {
-//       tooltip.transition()
-//           .duration(200) 
-//           .style("opacity", 0); // Make tooltip div invisible
-
-//       d3.select(this)
-//       .transition()
-//       .duration(200)
-//       .style("opacity", 0.5);
-//   };
-
-// Draw SVG  ==========================================
-
-    // bars
+    // Draw Bars
     svg.selectAll(".bar")
         .data(filtered_data, d => d.notebook + d.name)
         .join(
@@ -253,7 +191,7 @@ function draw() {
                 )
         );
 
-    // bar numbers
+    // Bar Numbers
     svg.selectAll(".bar-nums")
         .data(filtered_data, d => d.notebook + d.name)
         .join(
@@ -263,7 +201,9 @@ function draw() {
                 .style("font-size", "2rem")
                 .attr("x", d => d.score > 0 ?
                                 xScale(d.score) + margin.left + 10 :
-                                -(xScale(0) - xScale(d.score)) + margin.left * 1.2)
+                                -(xScale(0) - xScale(d.score)) + margin.left * 1.35
+                                + (+state.notebook === 4 ? xScale(0) * .6 :
+                                    state.notebook > 1 ? xScale(0) * .65 : 0))
                 .attr("y", d => yScale(d.name) + yScale.bandwidth() / 2 + 10)
                 .attr("opacity", 1)
                 .text(d => Math.round(d.score * 100) / 100)
@@ -276,7 +216,7 @@ function draw() {
                 )
         );
 
-    // yAxis Feature names
+    // Y-axis Feature Names: Line 1
     svg.selectAll(".feature_name")
         .data(filtered_data, d => d.notebook + d.name)
         .join(
@@ -288,15 +228,23 @@ function draw() {
         .attr("x", d => d.score > 0 ?
                             xScale(0) + margin.left - 10:
                             xScale(0) + margin.left + 10)
-        .attr("y", d => yScale(d.name) + yScale.bandwidth() / 3 + 6)
+        .attr("y", d => yScale(d.name) + yScale.bandwidth() / 3
+                        + (+state.notebook === 1 ? 6 : 15))
         .attr("opacity", 1)
         .text(d => {
           
           let feat1 = `${d.name.split("~~")[0]}`;
-          let tail = "_DemPos_RepNeg";
+          let tails = ["_DemPos_RepNeg", 
+                        "uency",
+                        " or Pacific Islander"];
 
-          if (feat1.indexOf(tail)) {
-            feat1 = feat1.replace(tail, "");
+          tails.map(tail => {
+
+            feat1 = feat1.replace(tail, "")
+          })
+
+          if (feat1.slice(0, 3) === "who") {
+            feat1 = "whoEarnedMore_same";
           }
 
           return feat1;
@@ -308,48 +256,60 @@ function draw() {
             )
     );
 
-    // yAxis Feature names
-      svg.selectAll(".feature_name2")
-        .data(filtered_data, d => d.notebook + d.name)
-        .join(
-            enter => enter
-              .append("text")
-        .attr("class", "feature_name2")
-        .style("text-anchor", d => d.score > 0 ? "end" : "start")
-        .style("font-size", "1.8rem")
-        .attr("x", d => d.score > 0 ?
-                            xScale(0) + margin.left - 10:
-                            xScale(0) + margin.left + 10)
-        .attr("y", d => yScale(d.name) + yScale.bandwidth() / 1.35 + 10)
-        .attr("opacity", 1)
-        .text(d => {
-          
-          let feat2 = `${d.name.split("~~")[1]}`;
-          let tail = "_DemPos_RepNeg";
+    // Y-Axis Feature Names: Line 2
+    svg.selectAll(".feature_name2")
+      .data(filtered_data, d => d.notebook + d.name)
+      .join(
+          enter => enter
+            .append("text")
+      .attr("class", "feature_name2")
+      .style("text-anchor", d => d.score > 0 ? "end" : "start")
+      .style("font-size", "1.8rem")
+      .attr("x", d => d.score > 0 ?
+                          xScale(0) + margin.left - 10:
+                          xScale(0) + margin.left + 10)
+      .attr("y", d => yScale(d.name) + yScale.bandwidth() / 1.35 + 10)
+      .attr("opacity", 1)
+      .text(d => {
+        
+        let feat2 = `${d.name.split("~~")[1]}`;
+        let tail = "_DemPos_RepNeg";
 
-          if (feat2.indexOf(tail)) {
-            feat2 = feat2.replace(tail, "");
-          }
+        feat2 = feat2.replace(tail, "");
 
-          return feat2;
-        }),
-        update => update,
-        exit => exit
-            .call(exit => exit.transition()
-            .remove()
-            )
+        return feat2 === "undefined" ? "" : feat2;
+      }),
+      update => update,
+      exit => exit
+          .call(exit => exit.transition()
+          .remove()
+          )
     );
 
 
-    // xAxis title
+    
+    // AXIS TITLES ==================================
+
+    // Y-Axis Title
     svg.append("text")
-        .attr("text-anchor", "end")
-        .attr("x", width - margin.left * 1.5)
-        .attr("y", height - margin.top * .5)
-        .attr("class", "xAxis-title")
-        .style("font-weight", "bold")
-        .style("font-size", "2rem")
-        .text(`${state.notebook < 3 ? "Pearson's R" : "Coefficient"}`);
+      .attr("y", margin.top / 3)
+      .attr("x", -margin.left * 3.5 - (state.notebook > 1 ? 180 : 0))
+      .attr("class", "yAxis-title")
+      .attr("transform", "rotate(-90)")
+      .style("font-weight", "bold")
+      .style("font-size", "2.5rem")
+      .text("Features")
+    
+
+    // X-Axis Title 
+    svg.append("text")
+      .attr("text-anchor", "end")
+      .attr("x", width - margin.left * 1.65 - (state.notebook > 1 ? 180 : 0))
+      .attr("y", height - margin.top * 0.1)
+      .attr("class", "xAxis-title")
+      .style("font-weight", "bold")
+      .style("font-size", "2rem")
+      .text(`${state.notebook < 3 ? "Pearson's R" : "Coefficient"}`);
 };
 
 
