@@ -1,11 +1,18 @@
 
 /* CONSTANTS AND GLOBALS */
-const width = window.innerWidth * .92;
-const height = 1050;
+
+const isMobile = window.innerWidth < 1080;
+
+const width = isMobile ? 
+                window.innerWidth * .92 :
+                1020;
+const height = isMobile ?
+                1050 :
+                850;
 const margin = {
   top: 80,
   left: 85,
-  right: 35
+  right: 55
 };
 
 const pastel1Colors = d3.scaleOrdinal(d3.schemePastel1);
@@ -77,9 +84,9 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
             enter => enter
             .append("circle")
                 .attr("class", "dot")
-                .attr("transform", d => `translate(${xScale(d.comp0) + margin.left / 2}, 
+                .attr("transform", d => `translate(${xScale(d.comp0) }, 
                                         ${yScale(d.comp1)})`)
-                .attr("r", 8)
+                .attr("r", isMobile ? 8 : 6)
                 .attr("fill", d => colorScale(d.relationshipQuality_isGood))
                 .attr("stroke", "black")
                 .attr("stroke-width", "1px")
@@ -107,18 +114,24 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
                         // yAxis title
     svg.append("text")
     .attr("y", margin.top / 3)
-    .attr("x", -margin.left * 8)
+    .attr("x", isMobile ?
+                -margin.left * 8 :
+                -450)
     .attr("transform", "rotate(-90)")
     .style("font-weight", "bold")
-    .style("font-size", "2.2rem")
+    .style("font-size", isMobile ? "2.2rem" : "2.5rem")
     .text("Component 1")
 
     // xAxis title
     svg.append("text")
     .attr("text-anchor", "end")
-    .attr("x", width - margin.left * 4)
-    .attr("y", height - margin.top / 8)
+    .attr("x", isMobile ? 
+                width - margin.left * 4 :
+                580)
+    .attr("y", isMobile ?
+                height - margin.top / 8 :
+                height - margin.top / 3)
     .style("font-weight", "bold")
-    .style("font-size", "2.2rem")
+    .style("font-size", isMobile ? "2.2rem" : "2.5rem")
     .text("Component 0");
 });
