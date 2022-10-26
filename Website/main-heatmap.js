@@ -1,9 +1,15 @@
 
 /* CONSTANTS AND GLOBALS */
-const width = window.innerWidth * .92;
-const height = 1000;
+const isMobile = window.innerWidth < 1080;
+
+const width = isMobile ?
+                window.innerWidth * .92 :
+                1050;
+const height = isMobile ? 
+                1000 :
+                500;
 const margin = {
-  top: 400,
+  top: isMobile ? 400 : 200,
   left: 80,
   right: 50
 };
@@ -105,8 +111,8 @@ d3.csv('data_to_visualize/5-unsupervised_component_0_1.csv', d3.autoType)
             .join("circle")
             .attr("class", "legend-dot")
             .attr("cx", 50)
-            .attr("cy", (_, i) => 150 + i * 50)
-            .attr("r", 15)
+            .attr("cy", (_, i) => (isMobile? 150 : 80) + i * (isMobile ? 50 : 35))
+            .attr("r", isMobile ? 15 : 10)
             .style("fill", d => d)
             .attr("stroke", "black")
 
@@ -115,8 +121,9 @@ d3.csv('data_to_visualize/5-unsupervised_component_0_1.csv', d3.autoType)
             .data(["-1", "0", "+1"])
             .join("text")
             .attr("class", "legend-label")
-            .attr("x", d => d === "0" ? 95 : 80)
-            .attr("y", (_, i) => 150 + i * 50)
+            .attr("x", d => d === "0" ? 
+                            isMobile ? 95 : 88 : 80)
+            .attr("y", (_, i) => (isMobile? 150 : 80) + i * (isMobile ? 50 : 35))
             .text(d => d)
             .style("font-size", "2rem")
             .style("font-family", "monospace")
@@ -124,8 +131,12 @@ d3.csv('data_to_visualize/5-unsupervised_component_0_1.csv', d3.autoType)
 
                 // yAxis title
     svg.append("text")
-    .attr("y", margin.top / 11)
-    .attr("x", -margin.left * 10.5)
+    .attr("y", isMobile ? 
+                margin.top / 11 :
+                margin.top / 5)
+    .attr("x", isMobile ? 
+                -margin.left * 10.5 : 
+                -420)
     .attr("transform", "rotate(-90)")
     .style("font-weight", "bold")
     .style("font-size", "2.2rem")
@@ -134,7 +145,7 @@ d3.csv('data_to_visualize/5-unsupervised_component_0_1.csv', d3.autoType)
     // xAxis title
     svg.append("text")
     .attr("text-anchor", "end")
-    .attr("x", width - margin.left * 5)
+    .attr("x", isMobile ? width - margin.left * 5 : 550)
     .attr("y", height - margin.top / 5)
     .style("font-weight", "bold")
     .style("font-size", "2.2rem")
