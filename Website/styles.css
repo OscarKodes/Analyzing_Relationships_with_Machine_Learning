@@ -172,6 +172,31 @@ a {
     margin: 1rem auto;
 }
 
+@media screen and (min-width: 1080px) {
+
+    /* For laptop and desktop sizes */
+
+    #table-container {
+        /* border-top: black solid 1px;
+        border-bottom: black solid 1px; */
+        border: none;
+    }
+
+    #table-container table {
+        margin: 1rem auto;
+        border: black solid 1px;
+    }
+
+    #table-container tr td:first-of-type {
+        font-size: 1.8rem;
+        text-align: right;
+        width: 25%;
+        font-weight: normal;
+        padding: 1rem;
+    }
+}
+
+
 #table-container tr {
     height: 6rem;
 }
