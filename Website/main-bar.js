@@ -1,10 +1,15 @@
 
 // CONSTANTS AND GLOBALS #########################################
 
-const width = window.innerWidth * .92;
+const isMobile = window.innerWidth < 1080;
+
+const width = isMobile ? 
+              window.innerWidth * .92 :
+              1072;
 
 // Change height & margin change based on selected notebook
-let height = 1800;
+let height = isMobile ?
+              1800 : 950;
 let margin = {
   top: 100,
   left: 200
@@ -72,7 +77,7 @@ function init() {
       .append("svg")
       .attr("width", width)
       .attr("height", height)
-      .style("background-color", "lavender");
+      // .style("background-color", "lavender");
 
 
     // AXIS TICKS ==================================
@@ -106,7 +111,10 @@ function init() {
 
 
       // Adjusts height based on notebook
-      height = state.notebook > 1 ? 1000 : 1800;
+      height = state.notebook > 1 ? 
+                isMobile ?
+                1000 : 750 :
+                isMobile ? 1800 : 950;
       svg.attr("height", height)
 
       // Adjust margin based on notebook
@@ -203,8 +211,11 @@ function draw() {
                                 xScale(d.score) + margin.left + 10 :
                                 -(xScale(0) - xScale(d.score)) + margin.left * 1.35
                                 + (+state.notebook === 4 ? xScale(0) * .6 :
-                                    state.notebook > 1 ? xScale(0) * .65 : 0))
-                .attr("y", d => yScale(d.name) + yScale.bandwidth() / 2 + 10)
+                                    state.notebook > 1 ? xScale(0) * .65 : 0)
+                                    + (isMobile ? 0 : 75) 
+                                    + (+state.notebook > 2 ? +state.notebook * -5 : 0))
+                .attr("y", d => yScale(d.name) + yScale.bandwidth() / 2 + 10
+                                    + (isMobile ? 0 : -4))
                 .attr("opacity", 1)
                 .text(d => Math.round(d.score * 100) / 100)
                 .call(enter => enter.transition()
@@ -224,12 +235,13 @@ function draw() {
               .append("text")
         .attr("class", "feature_name")
         .style("text-anchor", d => d.score > 0 ? "end" : "start")
-        .style("font-size", "1.8rem")
+        .style("font-size", isMobile || state.notebook > 1 ? "1.8rem" : "1.65rem")
         .attr("x", d => d.score > 0 ?
                             xScale(0) + margin.left - 10:
                             xScale(0) + margin.left + 10)
         .attr("y", d => yScale(d.name) + yScale.bandwidth() / 3
-                        + (+state.notebook === 1 ? 6 : 15))
+                        + (+state.notebook === 1 ? 6 : 15)
+                         + (isMobile ? 0 : -3))
         .attr("opacity", 1)
         .text(d => {
           
@@ -264,11 +276,12 @@ function draw() {
             .append("text")
       .attr("class", "feature_name2")
       .style("text-anchor", d => d.score > 0 ? "end" : "start")
-      .style("font-size", "1.8rem")
+      .style("font-size", isMobile ? "1.8rem" : "1.65rem")
       .attr("x", d => d.score > 0 ?
                           xScale(0) + margin.left - 10:
                           xScale(0) + margin.left + 10)
-      .attr("y", d => yScale(d.name) + yScale.bandwidth() / 1.35 + 10)
+      .attr("y", d => yScale(d.name) + yScale.bandwidth() / 1.35 + 10
+                      + (isMobile ? 0 : -6))
       .attr("opacity", 1)
       .text(d => {
         
@@ -292,23 +305,31 @@ function draw() {
 
     // Y-Axis Title
     svg.append("text")
-      .attr("y", margin.top / 3)
-      .attr("x", -margin.left * 3.5 - (state.notebook > 1 ? 180 : 0))
+      .attr("y", isMobile ? 
+                  margin.top / 3 :
+                  100)
+      .attr("x", isMobile ? 
+                  -margin.left * 3.5 - (state.notebook > 1 ? 180 : 0) :
+                  -400)
       .attr("class", "yAxis-title")
       .attr("transform", "rotate(-90)")
       .style("font-weight", "bold")
-      .style("font-size", "2.5rem")
+      .style("font-size", `${isMobile ? "2.5rem" : "2.85rem"}`)
       .text("Features")
     
 
     // X-Axis Title 
     svg.append("text")
       .attr("text-anchor", "end")
-      .attr("x", width - margin.left * 1.65 - (state.notebook > 1 ? 180 : 0))
-      .attr("y", height - margin.top * 0.1)
+      .attr("x", isMobile ? 
+                  width - margin.left * 1.65 - (state.notebook > 1 ? 180 : 0) :
+                  600)
+      .attr("y", isMobile ? 
+                  height - margin.top * 0.1 :
+                  height - margin.top / 2.5)
       .attr("class", "xAxis-title")
       .style("font-weight", "bold")
-      .style("font-size", "2rem")
+      .style("font-size", `${isMobile ? "2rem" : "2.85rem"}`)
       .text(`${state.notebook < 3 ? "Pearson's R" : "Coefficient"}`);
 };
 
