@@ -24,36 +24,42 @@
         <div id="title" class="section">
             <h1>Analyzing Relationships with Machine Learning</h1>
 
-            <!-- <p class="by-line">
+            <p class="by-line">
                 By <a href="https://www.oscarko.net">Oscar Ko</a>
-            </p> -->
+            </p>
 
             <div id="cover-img">
-                <img src="" alt="Cover Image Goes Here">
+                <img src="cover.png" alt="Cover image. Couple sitting on bench.">
+                <a id="photo-src" href="https://unsplash.com/photos/wHaQ4XJ9SgY">
+                    Photo from Marc A.
+                </a>
             </div>
 
 
+
             <p>
-                Introduction text, data source, and link to github repo go here.
+                What can we learn about relationships by using machine learning for exploratory analysis?
                 <br><br>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, est amet provident veritatis vero
-                consequuntur maxime nobis. Nesciunt eveniet harum itaque doloribus a recusandae aliquam? Aut natus nobis
-                numquam esse!
-                <br><br>
-                Explain data cleaning and link to notebook 0.
+                The dataset was taken from a Stanford University survey called, "<a
+                    href="https://data.stanford.edu/hcmst2017">How Couples Meet and Stay Together 2017</a>." This
+                dataset contains many variables including age, education level, political party, income, usage of dating
+                apps, and quality of relationship (as self-rated by the subject). To prepare this data for analysis, I
+                renamed and recoded a few features. The specific cleaning steps I took can be seen in this <a
+                    href="">Jupyter notebook</a>. During the cleaning process, I also consulted this <a
+                    href="https://stacks.stanford.edu/file/druid:vt073cc9067/HCMST_2017_fresh_Codeboodk_v1.1a.pdf">codebook</a>.
             </p>
 
             <div class="bullet-list">
-                General Research Questions
+                For this project, I had a few general research questions:
                 <ul>
                     <li>
-                        Question 1
+                        Can any features in this dataset help predict a subject's relationship quality rating?
                     </li>
                     <li>
-                        Question 2
+                        Do couples that meet on dating apps have higher or lower quality relationships?
                     </li>
                     <li>
-                        Question 3
+                        What insights can I derive from using machine learning for exploratory analysis?
                     </li>
                 </ul>
             </div>
@@ -102,11 +108,13 @@
 
                 <!-- D3 VIS GOES BELOW HERE -->
 
-                <div id="bar-vis" class="vis"> D3 Vis - Selected Vis Goes here</div>
+                <div id="bar-vis" class="vis">
+                    <!-- <h3 id="vis-title">Vis Title</h3> -->
+                </div>
 
                 <!-- D3 VIS GOES ABOVE HERE -->
 
-                <p>
+                <p id="super-text">
                     Here will be text to interpret whatever is visualized.
                 </p>
 
@@ -171,14 +179,16 @@
             <h2>Conclusion (Longer)</h2>
 
             <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel dolores rem molestias ullam quisquam
-                numquam provident soluta aperiam necessitatibus, aspernatur voluptate minima iusto quae! Quidem quisquam
-                commodi ipsum nemo quae?
+                - Answer research questions
+                <br>
+                - Sum up general insights
             </p>
 
-            <!-- D3 VIS GOES BELOW HERE -->
-
             <p>
+                - Explain the chart. (see which features keep popping up)
+                <br>
+                - For the chart below I grouped some together that were similar
+                <br>
                 Which features showed up multiple times in the models?
                 (Some features like sex frequency have been grouped together.)
                 (Met as coworkers and met as work neighbors have also been grouped together as they are similar topics.)
@@ -276,22 +286,21 @@
 
 
             <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel dolores rem molestias ullam quisquam
-                numquam provident soluta aperiam necessitatibus, aspernatur voluptate minima iusto quae! Quidem quisquam
-                commodi ipsum nemo quae?
+                It seems these features keep popping up.
+
             </p>
 
 
 
 
 
-            <div id="bottom-link">
-                <a href="https://www.oscarko.net">www.OscarKo.net</a>
-            </div>
+
 
 
         </div>
-
+        <div id="bottom-link">
+            <a href="https://www.oscarko.net">www.OscarKo.net</a>
+        </div>
 
 
 
