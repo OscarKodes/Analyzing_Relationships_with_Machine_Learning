@@ -41,17 +41,17 @@ const updateTextAndTitle = (notebook) => {
     }
 
     const textObj2 = {
-        1: "text-1",
-        2: "text-2",
-        3: "text-3",
-        4: "text-4"
+        1: "Text-1",
+        2: "Text-2",
+        3: "Text-3",
+        4: "Text-4"
     }
 
     const titleObj = {
-        1: "Title-1",
-        2: "Title-2",
-        3: "Title-3",
-        4: "Title-4"
+        1: "Top Correlations between Features",
+        2: "Top Correlations between Features & Relationship Quality",
+        3: "Classification Model Feature Coefficients",
+        4: "Regression Model Feature Coefficients"
     }
 
     superText1.innerHTML = textObj1[notebook];
