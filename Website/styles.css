@@ -140,19 +140,21 @@ h2 {
 }
 
 #dropdown-container {
-    width: 50%;
+    width: 95%;
     margin: 1rem auto 3rem;
 }
 
 #dropdown {
-    font-size: 3.5rem;
+    font-size: 2.35rem;
     text-align: center;
     width: 100%;
     border: #333333 2px solid;
+    font-weight: bold;
+    padding: .8rem 0;
 }
 
 #dropdown option {
-    font-size: 1.25rem;
+    font-size: 1rem;
 }
 
 .vis {

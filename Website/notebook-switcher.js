@@ -35,9 +35,9 @@ const updateTextAndTitle = (notebook) => {
 
     const textObj1 = {
         1: `This barchart shows the features that had the strongest correlations with each other based on the correlation matrix conducted in my ${notebookLinks[notebook]}.`,
-        2: `This barchart shows the features that had the strongest correlations with relationship quality based on the correlation matrix conducted in my ${notebookLinks[notebook]}.`,
-        3: `This barchart shows the features left in my Logistic Regression model (for predicting relationship quality) after conducting backwards elimination to remove all features that were more likely to be statistically insignifgant (where their alpha levels were over p = .05). The specific steps I took can be found in my ${notebookLinks[notebook]}.`,
-        4: `This barchart shows the features left in my Linear Regression model (for predicting relationship quality) after conducting backwards elimination to remove all features that were more likely to be statistically insignifgant (where their alpha levels were over p = .05). The specific steps I took can be found in my ${notebookLinks[notebook]}.`
+        2: `This barchart shows the features that had the strongest correlations with relationship quality based on the correlation matrix conducted in the ${notebookLinks[notebook]}.`,
+        3: `This barchart shows the features left in my Logistic Regression model (for predicting relationship quality) after conducting backwards elimination to remove all features that were more likely to be statistically insignifgant (where their alpha levels were over p = .05). The specific steps I took can be found in the ${notebookLinks[notebook]}.`,
+        4: `This barchart shows the features left in my Linear Regression model (for predicting relationship quality) after conducting backwards elimination to remove all features that were more likely to be statistically insignifgant (where their alpha levels were over p = .05). The specific steps I took can be found in the ${notebookLinks[notebook]}.`
     }
 
     const textObj2 = {
