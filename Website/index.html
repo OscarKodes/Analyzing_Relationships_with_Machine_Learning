@@ -150,7 +150,25 @@
             <div id="unsupervised-container" class="hidden">
 
                 <p>
-                    Text to introduce unsupervised learning, heatmap, and scatterplot.
+                    In Principal Component Analysis (PCA), the data is represented by principal components. PCA searches
+                    for the areas in the dataset that have the most variation and creates an "axis"
+                    for it. This axis with high variance is called a pricipal component. PCA is a great way to reduce
+                    the number of dimensions in a dataset without losing too much information.
+
+                    <br><br>
+                    PCA also sorts its components from most to least variance captured, so a decent way to visualize a
+                    high-diemensional dataset on a 2D plane is by using the first two components as X and Y axes.
+
+                    <br><br>
+
+                    For my PCA analysis, I took only the top features from the final classificatoin and regression
+                    models to make interpretation simpler.
+
+                    <br><br>
+
+                    PCA components as axes on a plot can be difficult to interpret because they take in information from
+                    many different features.
+                    Visualizing the components on a heatmap first might help interpretation.
                 </p>
 
 
@@ -158,7 +176,9 @@
                 <!-- D3 VIS GOES BELOW HERE -->
 
                 <div id="heatmap-vis" class="vis">
-                    Title?
+                    <h3>
+                        Feature Contributions to Components 1 & 0
+                    </h3>
                 </div>
 
                 <!-- D3 VIS GOES ABOVE HERE -->
@@ -166,14 +186,66 @@
 
 
                 <p>
-                    Text to interpret heatmap.
+                    The color of each feature shows how it contributes to that component's variance and how they relate
+                    to one another for that specific component. This can be used to help interpret a plot where the axes
+                    are components 0 and 1.
+
+                    <br><br>
+                    The grey colored rectangles show that a feature does not contribute much to a
+                    component's variance.
+
+                    <br><br>
+                    A yellow colored feature shows that it is positive, so when you increase on this component's axis,
+                    you will get more of that feature.
+
+                    <br><br>
+                    For example, Component 0 has the number of household minors colored in yellow, so as you go forward
+                    on this axis, the subjects tend to have more children at home.
+
+                    <br><br>
+                    A black colored feature shows that it is negative, so when you increase on this component's axis,
+                    you will get less of that feature.
+
+                    <br><br>
+                    For
+                    example, Component 0 has the partner's age colored in black, so as you go forward on this axis, the
+                    cases tend to have younger partners.
+
+                    <br><br>
+
+                    The most useful parts of the heat map are:
+                    <br>
+                    Component 0:
+                    <br>
+                    Positive Signs
+                    <br>
+                    Number of minors in household (strong)
+                    <br>
+                    Partner's mother education (strong)
+                    <br>
+                    Negative Signs
+                    <br>
+                    Partner's Age (strong)
+                    <br>
+                    Component 1:
+                    <br>
+                    Positive Signs
+                    <br>
+
+                    Household income (strong)
+                    <br>
+                    Partner's mother education (strong)
+                    <br>
+                    Negative Signs
+                    <br>
+                    Numer of minors in household (moderate)
                 </p>
 
 
                 <!-- D3 VIS GOES BELOW HERE -->
 
                 <div id="scatter-vis" class="vis">
-                    Title?
+                    <h3>Relationship Quality: Good vs Not Good</h3>
                 </div>
 
                 <!-- D3 VIS GOES ABOVE HERE -->
@@ -186,9 +258,11 @@
 
 
 
+
                 <a href="">Link to the selected notebook</a>
             </div>
 
+            <a href="#notebook-vis">Return to Dropdown List</a>
         </div>
 
 
