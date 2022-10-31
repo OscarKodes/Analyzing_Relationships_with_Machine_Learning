@@ -183,18 +183,22 @@ function draw() {
               .append("rect")
                 .attr("class", "bar")
                 .attr("height", yScale.bandwidth())
-                .attr("width", d => d.score > 0 ? 
-                                    xScale(d.score) - xScale(0) :
-                                    xScale(0) - xScale(d.score))
-                .attr("x", d => d.score > 0 ? 
-                                0 : -(xScale(0) - xScale(d.score)))
+                .attr("width", 0)
+                .attr("x", 0)
                 .attr("y", d => yScale(d.name))
                 .attr("fill", d => colorScale(d.score > 0))
                 .attr("transform", `translate(${margin.left + xScale(0)}, 0)`)
                 .attr("stroke", "grey")
               .call(enter => enter.transition()
-              ),
-              update => update,
+                // .delay(200)
+                .duration(2500)
+                .attr("width", d => d.score > 0 ? 
+                                    xScale(d.score) - xScale(0) :
+                                    xScale(0) - xScale(d.score))
+                .attr("x", d => d.score > 0 ? 
+                                0 : -(xScale(0) - xScale(d.score)))
+                ),
+              // update => update,
               exit => exit
                 .call(exit => exit.transition()
                   .remove()
@@ -209,20 +213,23 @@ function draw() {
               .append("text")
                 .attr("class", "bar-nums")
                 .style("font-size", "2rem")
-                .attr("x", d => d.score > 0 ?
-                                xScale(d.score) + margin.left + 10 :
-                                -(xScale(0) - xScale(d.score)) + margin.left * 1.35
-                                + (+state.notebook === 4 ? xScale(0) * .6 :
-                                    state.notebook > 1 ? xScale(0) * .65 : 0)
-                                    + (isMobile ? 0 : 75) 
-                                    + (+state.notebook > 2 ? +state.notebook * -5 : 0))
+                .attr("x", d => d.score > 0 ? xScale(0) + margin.left + 5 : xScale(0))
                 .attr("y", d => yScale(d.name) + yScale.bandwidth() / 2 + 10
                                     + (isMobile ? 0 : -4))
-                .attr("opacity", 1)
+                .attr("opacity", .5)
                 .text(d => Math.round(d.score * 100) / 100)
-                .call(enter => enter.transition()
-            ),
-            update => update,
+              .call(enter => enter.transition()
+                .duration(2500)
+                .attr("opacity", 1)
+                .attr("x", d => d.score > 0 ?
+                      xScale(d.score) + margin.left + 10 :
+                      -(xScale(0) - xScale(d.score)) + margin.left * 1.35
+                      + (+state.notebook === 4 ? xScale(0) * .6 :
+                          state.notebook > 1 ? xScale(0) * .65 : 0)
+                          + (isMobile ? 0 : 75) 
+                          + (+state.notebook > 2 ? +state.notebook * -5 : 0))
+              ),
+            // update => update,
             exit => exit
                 .call(exit => exit.transition()
                 .remove()
