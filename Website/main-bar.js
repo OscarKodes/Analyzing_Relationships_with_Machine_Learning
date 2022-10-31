@@ -213,7 +213,11 @@ function draw() {
               .append("text")
                 .attr("class", "bar-nums")
                 .style("font-size", "2rem")
-                .attr("x", d => d.score > 0 ? xScale(0) + margin.left + 5 : xScale(0))
+                .attr("x", d => d.score > 0 ? 
+                                xScale(0) + margin.left + 5 : 
+                                +d.notebook[0] === 1 ?
+                                xScale(0) + margin.left / 2 :
+                                xScale(0))
                 .attr("y", d => yScale(d.name) + yScale.bandwidth() / 2 + 10
                                     + (isMobile ? 0 : -4))
                 .attr("opacity", .5)
