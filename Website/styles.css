@@ -237,3 +237,12 @@ tbody tr:not([highlight]) {
 .hidden {
     display: none;
 }
+
+.tippy-tooltip {
+    font-size: 2rem;
+    border-radius: 1rem;
+    /* border: 2px grey solid; */
+    /* background-color: #181818f8; */
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
+    padding: 1.35rem;
+}

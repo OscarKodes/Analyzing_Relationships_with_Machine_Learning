@@ -1,3 +1,5 @@
+// IMPORT TOOLTIP TEXT ###########################################
+import { ToolTipText } from "./tooltip-text.js";
 
 // CONSTANTS AND GLOBALS #########################################
 
@@ -174,7 +176,7 @@ function draw() {
   // DRAW ==========================================
 
     // Draw Bars
-    svg.selectAll(".bar")
+    const bars = svg.selectAll(".bar")
         .data(filtered_data, d => d.notebook + d.name)
         .join(
             enter => enter
@@ -331,6 +333,27 @@ function draw() {
       .style("font-weight", "bold")
       .style("font-size", `${isMobile ? "2rem" : "2.85rem"}`)
       .text(`${state.notebook < 3 ? "Pearson's R" : "Coefficient"}`);
+
+
+
+
+
+    // ============================================
+
+    // set default arrows on tool tips
+    tippy.setDefaults({
+      "arrow": true
+    })
+
+    // set the tooltip content
+    bars
+      .attr("data-tippy-content", d => {
+          return ToolTipText[d.notebook[0] + "-" + d.name];
+      })
+
+
+    // call tippy on the bars
+    tippy(bars.nodes());
 };
 
 

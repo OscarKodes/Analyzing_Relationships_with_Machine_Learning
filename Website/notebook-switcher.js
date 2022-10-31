@@ -6,6 +6,8 @@ const superText1 = document.getElementById("super-text1");
 const superText2 = document.getElementById("super-text2");
 const visTitle = document.getElementById("vis-title");
 
+
+
 selectMenu.addEventListener("change", (event) => {
 
     // see which notebook was selected
@@ -22,6 +24,7 @@ selectMenu.addEventListener("change", (event) => {
         // update supervised text explaination
         updateTextAndTitle(selectedNotebook);
     }
+
 });
 
 const updateTextAndTitle = (notebook) => {
