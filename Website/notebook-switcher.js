@@ -44,10 +44,46 @@ const updateTextAndTitle = (notebook) => {
     }
 
     const textObj2 = {
-        1: "All the correlations between the feature pairs above had a p-value of 0.",
-        2: "All the top correlations with rQual shown had p-values below 0.05.",
-        3: "Text-3",
-        4: "Text-4"
+        1: "All the correlations between the feature pairs above had a p-value of 0." +
+                "<br><br>" +
+                "<ul>" + 
+                "Notable findings:" +
+                "<li>Subjects were more likely to have partners that had similar political leanings.</li>" +
+                "<li>Subjects were more likely to have partners that had similar education levels.</li>" +
+                "<li>The older a subject was when meeting their partner, the larger their age gap tended to be.</li>" +
+                "<li>As subjects were likely to have partners that had similar education levels, their mothers were also likely to have similar education levels.</li>" +
+                "<li>The older a subject was when they met their partner, the shorter it took for them to become a couple.</li>" +
+                "</ul>",
+        2: "All the top correlations with rQual shown had p-values below 0.05." +
+                "<br><br>" +
+                "<ul>" + 
+                "Notable findings:" +
+                "<li>Income: When couples had higher household incomes, the relationship was more likely to be self-rated as 'good.'</li>" +
+                "<li>Education: When couples had higher education levels, the relationship was more likely to be self-rated as 'good.'</li>" +
+                "<li>Age: When couples were older, the relationship was more likely to be self-rated as 'good.'</li>" +
+                "<li>Children: When the subject's household had more members below the age of 18, the relationship was less likely to be self-rated as 'good.'</li>" +
+                "</ul>",
+        3: "Classification" +
+                "<br><br>" +
+                "<ul>" +
+                "Notable findings:" +
+                "<li>Income: When couples had higher household incomes, the relationship was more likely to be self-rated as 'good.'</li>" +
+                "<li>Education: When couples had higher education levels, the relationship was more likely to be self-rated as 'good.'</li>" +
+                "<li>Age: When couples were older, the relationship was more likely to be self-rated as 'good.'</li>" +
+                "<li>Sex Frequency: When the couple had sex at least once a week or more, the relationship was more likely to be self-rated as 'good.'</li>" +
+                "</ul>",
+        4: "Regression" +
+                "<br><br>" +
+                "<ul>" +
+                "Notable findings:" +
+                "<li>Income: When couples had higher household incomes, the relationship was more likely to be self-rated as 'good.'</li>" +
+                "<li>Equal Earnings: When couples earned about the same amount of income, the relationship was more likely to be self-rated as 'good.'</li>" +
+                "<li>School : When couples met in school, the relationship was more likely to be self-rated as 'good.'</li>" +
+                "<li>Work Neighbors: When couples met as work neighbors*, the relationship was more likely to be self-rated as 'good.'</li>" +
+                "<li>Age: When couples were older, the relationship was more likely to be self-rated as 'good.'</li>" +
+                "<li>Sex Frequency: When the couple had sex at least once a week or more, the relationship was more likely to be self-rated as 'good.'</li>" +
+                "</ul>" +
+                "* When consulting the codebook, it was unclear what the distinction was between coworkers and work neighbors if any.",
     }
 
     const titleObj = {
@@ -58,6 +94,6 @@ const updateTextAndTitle = (notebook) => {
     }
 
     superText1.innerHTML = textObj1[notebook];
-    superText2.innerText = textObj2[notebook];
-    visTitle.innerText = titleObj[notebook];
+    superText2.innerHTML = textObj2[notebook];
+    visTitle.innerHTML = titleObj[notebook];
 } 
