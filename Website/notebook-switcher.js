@@ -44,7 +44,7 @@ const updateTextAndTitle = (notebook) => {
     }
 
     const textObj2 = {
-        1: "Text-1",
+        1: "All the correlations between the feature pairs above had a p-value of 0.",
         2: "Text-2",
         3: "Text-3",
         4: "Text-4"
