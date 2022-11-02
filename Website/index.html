@@ -109,30 +109,115 @@
 
                 <!-- VIS DESCRIPTION -->
 
-                <p id="super-text1">
+                <p class="super-text1 n1">
                     This barchart shows the features that had the strongest correlations with each other based on the
-                    correlation matrix conducted in my
-                    <a
+                    correlation matrix conducted in the <a
                         href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/1%20-%20Exploratory%20Analysis%20.ipynb">
                         EDA notebook</a>.
+                </p>
+                <p class="super-text1 n2">
+                    This barchart shows the features that had the strongest correlations with relationship quality based
+                    on the correlation matrix conducted in the <a
+                        href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/1%20-%20Exploratory%20Analysis%20.ipynb">EDA
+                        notebook</a>.
+                </p>
+                <p class="super-text1 n3">
+                    This barchart shows the features left in my Logistic Regression model (for predicting relationship
+                    quality) after conducting backwards elimination to remove all features that were more likely to be
+                    statistically insignifgant (where their alpha levels were over p = .05). The specific steps I took
+                    can be found in the <a
+                        href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/2%20-%20Classification.ipynb">classification
+                        notebook</a>.
+                </p>
+                <p class="super-text1 n4">
+                    This barchart shows the features left in my Linear Regression model (for predicting relationship
+                    quality) after conducting backwards elimination to remove all features that were more likely to be
+                    statistically insignifgant (where their alpha levels were over p = .05). The specific steps I took
+                    can be found in the $<a
+                        href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/3%20-%20Regression.ipynb">regression
+                        notebook</a>.
                 </p>
 
 
                 <!-- DYNAMIC BAR VIS -->
 
                 <div id="bar-vis" class="vis">
-                    <h3 id="vis-title">Top Correlations between Features</h3>
+                    <h3 class="vis-title n1">Top Correlations between Features</h3>
+                    <h3 class="vis-title n2">Top Correlations between Features & Relationship Quality</h3>
+                    <h3 class="vis-title n3">Classification Model Feature Coefficients</h3>
+                    <h3 class="vis-title n4">Regression Model Feature Coefficients</h3>
                 </div>
 
 
                 <!-- NOTABLE FINDINGS -->
 
-                <p id="super-text2">
-                    Here will be text to interpret whatever is visualized.
-                </p>
+                <div class="super-text2 n1">
+                    <p>All the correlations between the feature pairs above had a p-value of 0.</p>
+                    <ul>
+                        Notable findings:
+                        <li>Subjects were more likely to have partners that had similar political leanings.</li>
+                        <li>Subjects were more likely to have partners that had similar education levels.</li>
+                        <li>The older a subject was when meeting their partner, the larger their age gap tended to be.
+                        </li>
+                        <li>As subjects were likely to have partners that had similar education levels, their mothers
+                            were also likely to have similar education levels.</li>
+                        <li>The older a subject was when they met their partner, the shorter it took for them to become
+                            a couple.</li>
+                    </ul>
+                </div>
 
-                <a
-                    href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/1%20-%20Exploratory%20Analysis%20.ipynb">Link
+                <div class="super-text2 n2">
+                    <p>All the top correlations with rQual shown had p-values below 0.05.</p>
+                    <ul>
+                        Notable findings:
+                        <li>Income: When couples had higher household incomes, the relationship was more likely to be
+                            self-rated as 'good.'</li>
+                        <li>Education: When couples had higher education levels, the relationship was more likely to be
+                            self-rated as 'good.'</li>
+                        <li>Age: When couples were older, the relationship was more likely to be self-rated as 'good.'
+                        </li>
+                        <li>Children: When the subject's household had more members below the age of 18, the
+                            relationship was less likely to be self-rated as 'good.'</li>
+                    </ul>
+                </div>
+
+                <div class="super-text2 n3">
+                    <p>Classification</p>
+                    <ul>
+                        Notable findings:
+                        <li>Income: When couples had higher household incomes, the relationship was more likely to be
+                            self-rated as 'good.'</li>
+                        <li>Education: When couples had higher education levels, the relationship was more likely to be
+                            self-rated as 'good.'</li>
+                        <li>Age: When couples were older, the relationship was more likely to be self-rated as 'good.'
+                        </li>
+                        <li>Sex Frequency: When the couple had sex at least once a week or more, the relationship was
+                            more likely to be self-rated as 'good.'</li>
+                    </ul>
+                </div>
+
+                <div class="super-text2 n4">
+                    <p>Regression</p>
+                    <ul>
+                        Notable findings:
+                        <li>Income: When couples had higher household incomes, the relationship was more likely to be
+                            self-rated as 'good.'</li>
+                        <li>Equal Earnings: When couples earned about the same amount of income, the relationship was
+                            more likely to be self-rated as 'good.'</li>
+                        <li>School : When couples met in school, the relationship was more likely to be self-rated as
+                            'good.'</li>
+                        <li>Work Neighbors: When couples met as work neighbors*, the relationship was more likely to be
+                            self-rated as 'good.'</li>
+                        <li>Age: When couples were older, the relationship was more likely to be self-rated as 'good.'
+                        </li>
+                        <li>Sex Frequency: When the couple had sex at least once a week or more, the relationship was
+                            more likely to be self-rated as 'good.'</li>
+                    </ul>
+                    <p>* When consulting the codebook, it was unclear what the distinction was between coworkers and
+                        work neighbors if any.</p>
+                </div>
+
+                <a id="notebook-link" href="">Link
                     to the selected notebook</a>
             </div>
 
