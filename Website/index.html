@@ -393,19 +393,51 @@
             <h2>Conclusion (Longer)</h2>
 
             <p>
-                - Answer research questions
+                Can any features in this dataset help predict a subject's relationship quality rating?
                 <br>
-                - Sum up general insights
+                Yes, it seems the best features in this dataset for predicting relationship quality are age, education,
+                income, and number of children living in household.[Add more later]
+
+                As a note, correlation between a predictor variable and the outcome variable does not mean causation or
+                even chronological order. For example, couples living together have correlation with relationships rated
+                as "good." Maybe a couple is happy together and they decide to live together, but also maybe by living
+                together it helped strengthen their bond.
+                <br>
+                Do couples that meet on dating apps have higher or lower quality relationships?
+                <br>
+                Whether it was in the correlation matrix or in the machine learning models, having met on dating apps
+                did not come up as a significant feature in any of them. So it seems whether or not a couple has met on
+                dating apps is not a good predictor for relationship quality.
+                <br>
+                What insights can I derive from using machine learning for exploratory analysis?
+                <br>
+                (Aside from the findings of the features above)
+                - Subjects were more likely to have partners that had:
+                - similar political leanings
+                - similar education levels
+                - Older subjects have larger age gaps in their relationships
+                - The older a subject was when they met their partner, the shorter it took for them to become a couple.
             </p>
 
             <p>
-                - Explain the chart. (see which features keep popping up)
+
+                A feature may show up as significant in one model, but maybe it wouldn't be so significant in other
+                models. In the efforts for exploratory analysis, if a feature appeared as signifigant in multiple models
+                surely, there is something worth investigating there.
                 <br>
-                - For the chart below I grouped some together that were similar
+                In the table below I marked which features were important in which models.
                 <br>
-                Which features showed up multiple times in the models?
-                (Some features like sex frequency have been grouped together.)
-                (Met as coworkers and met as work neighbors have also been grouped together as they are similar topics.)
+                * I grouped some features together in the table that had similar concepts. For example subject age and
+                partner age both relate to age and they are correlated, so for simplicity I grouped them together in the
+                table below as "Age."
+                <br>
+                * Met as coworkers and met as work neighbors have also been grouped together as they are similar topics.
+                Checking the codebook, there does not seem to be any distinction between the two, yet in the
+                classification model meeting as coworkers seemed to decrease the probabilty of a "good" rated
+                relationship, but in the regression model meeting as "work neighbors" seemed to increase how highly a
+                subject rated their relationship. These are contradictory results, but since are workmates related, a
+                conclusion we could make is the relationship between being workmates and having a "good" relationship is
+                worth investigating further.
             </p>
 
 
@@ -503,8 +535,22 @@
             <!-- CLOSING WORDS -->
 
             <p>
-                It seems these features keep popping up.
+                It seems the general concepts that appeared in more than one model were number of household minors, age,
+                education, income, living together, workmates, and sex frequency.
 
+                <br><br>
+
+                The relationship between these concepts and relationship quality might be worth investigating further
+                with future studies and more relationship data.
+
+                <br><br>
+
+                This analysis is done on just one dataset of couples. Relationships in the real world might be very
+                different. Just because a couple is of certain ages, races, education levels, or incomes it neither
+                means their relationship is doomed to fail, nor destined to succeed.
+
+                <br><br>
+                "Love is unpredictable and it's frustrating and it's tragic and it's beautiful.” - Taylor Swift
             </p>
 
 
