@@ -4,9 +4,6 @@
     <meta charset="utf-8">
     <title>Analyzing Relationships with Machine Learning</title>
 
-
-    <!-- GoogleFonts -->
-
     <!-- Local CSS -->
     <link rel="stylesheet" href="styles.css">
 
@@ -14,14 +11,12 @@
 
 <body>
 
-
-
     <div id="main-container">
 
         <!-- INTRODUCTION SECTION -->
 
-
         <div id="title" class="section">
+
             <h1>Analyzing Relationships with Machine Learning</h1>
 
             <p class="by-line">
@@ -34,8 +29,6 @@
                     Photo from Marc A.
                 </a>
             </div>
-
-
 
             <p>
                 What can we learn about relationships by using machine learning for exploratory analysis?
@@ -95,7 +88,6 @@
                 <br><br>
                 With the dropdown menu below, you can view visualizations of the results from those four notebooks.
 
-
             </p>
 
 
@@ -111,8 +103,11 @@
 
 
 
+            <!-- SUPERVISED LEARNING NOTEBOOKS -->
 
             <div id="supervised-container">
+
+                <!-- VIS DESCRIPTION -->
 
                 <p id="super-text1">
                     This barchart shows the features that had the strongest correlations with each other based on the
@@ -122,13 +117,15 @@
                         EDA notebook</a>.
                 </p>
 
-                <!-- D3 VIS GOES BELOW HERE -->
+
+                <!-- DYNAMIC BAR VIS -->
 
                 <div id="bar-vis" class="vis">
                     <h3 id="vis-title">Top Correlations between Features</h3>
                 </div>
 
-                <!-- D3 VIS GOES ABOVE HERE -->
+
+                <!-- NOTABLE FINDINGS -->
 
                 <p id="super-text2">
                     Here will be text to interpret whatever is visualized.
@@ -140,14 +137,12 @@
             </div>
 
 
-            <!-- Temporary seperator -->
-            <!-- <br>
-            <hr><br>
-            <hr> -->
-            <!-- Temporary seperator -->
 
+            <!-- UNSUPERVISED LEARNING NOTEBOOK -->
 
             <div id="unsupervised-container" class="hidden">
+
+                <!-- DESCRIPTION -->
 
                 <p>
                     In Principal Component Analysis (PCA), the data is represented by principal components. PCA searches
@@ -173,7 +168,7 @@
 
 
 
-                <!-- D3 VIS GOES BELOW HERE -->
+                <!-- HEAT VIS -->
 
                 <div id="heatmap-vis" class="vis">
                     <h3>
@@ -181,9 +176,9 @@
                     </h3>
                 </div>
 
-                <!-- D3 VIS GOES ABOVE HERE -->
 
 
+                <!-- TEXT INTERPRET -->
 
                 <p>
                     The color of each feature shows how it contributes to that component's variance and how they relate
@@ -242,15 +237,14 @@
                 </p>
 
 
-                <!-- D3 VIS GOES BELOW HERE -->
+                <!-- SCATTER VIS -->
 
                 <div id="scatter-vis" class="vis">
                     <h3>Relationship Quality: Good vs Not Good</h3>
                 </div>
 
-                <!-- D3 VIS GOES ABOVE HERE -->
 
-
+                <!-- TEXT INTERPRET -->
 
                 <p>
                     Text to interpret scatterplot.
@@ -266,6 +260,7 @@
         </div>
 
 
+        <!-- CONCLUSION SECTION -->
 
         <div id="conclusion-long" class="section">
             <h2>Conclusion (Longer)</h2>
@@ -286,6 +281,8 @@
                 (Met as coworkers and met as work neighbors have also been grouped together as they are similar topics.)
             </p>
 
+
+            <!-- TABLE STARTS BELOW -->
 
             <div id="table-container">
                 <table>
@@ -373,9 +370,10 @@
                 </table>
             </div>
 
+            <!-- TABLE ENDS ABOVE -->
 
-            <!-- D3 VIS GOES ABOVE HERE -->
 
+            <!-- CLOSING WORDS -->
 
             <p>
                 It seems these features keep popping up.
@@ -383,16 +381,17 @@
             </p>
 
 
-
-
-
-
-
-
         </div>
+
+
         <div id="bottom-link">
             <a href="https://www.oscarko.net">www.OscarKo.net</a>
         </div>
+
+
+
+
+
 
         <!-- Tippy Popper CDN -->
         <script src="https://unpkg.com/popper.js@1"></script>
