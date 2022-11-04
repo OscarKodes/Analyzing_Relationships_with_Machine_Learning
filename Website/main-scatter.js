@@ -15,11 +15,6 @@ const margin = {
   right: 55
 };
 
-const pastel1Colors = d3.scaleOrdinal(d3.schemePastel1);
-const pastel2Colors = d3.scaleOrdinal(d3.schemePastel2);
-const accentColors = d3.scaleOrdinal(d3.schemeAccent);
-const schemeSet3Colors = d3.scaleOrdinal(d3.schemeSet3);
-
 // const formatDate = d3.time.format("%Y-%m-%d");
 
 d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
@@ -37,11 +32,11 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
         .domain([-4, 4])
         .range([height - margin.top, margin.top]);
 
-    const allColors = ["black", "grey", "yellow"];
+    const allColors = ["blue", "yellow"];
 
     const colorScale = d3.scaleLinear()
         .domain([0, 1])
-        .range(["blue", "yellow"])
+        .range(allColors)
 
     // AXIS
     const xAxis = d3.axisBottom()
@@ -134,4 +129,29 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
     .style("font-weight", "bold")
     .style("font-size", isMobile ? "2.2rem" : "2.5rem")
     .text("Component 0");
+
+    // Color dots for Legend
+    svg.selectAll(".legend")
+      .data(allColors)
+      .join("circle")
+      .attr("class", "legend-dot")
+      .attr("cx", width - margin.left * 2.5 + 20)
+      .attr("cy", (_, i) => (isMobile? 105 : 80) + i * (isMobile ? 50 : 35))
+      .attr("r", isMobile ? 13 : 10)
+      .style("fill", d => d)
+      .attr("stroke", "black")
+      .attr("stroke-width", "3px")
+      .attr("fill-opacity", ".85")
+
+    // labels for Legend
+    svg.selectAll(".legend-label")
+      .data(["'Not good'", "'Good'"])
+      .join("text")
+      .attr("class", "legend-label")
+      .attr("x", d => width - margin.left * 2)
+      .attr("y", (_, i) => (isMobile? 107 : 80) + i * (isMobile ? 50 : 35))
+      .text(d => d)
+      .style("font-size", "2rem")
+      .style("font-family", "monospace")
+      .attr("alignment-baseline","middle")
 });
