@@ -15,6 +15,10 @@
     } */
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 #photo-src {
     color: #b3b3b3;
     text-decoration: underline;
@@ -253,4 +257,18 @@ tbody tr:not([highlight]) {
 
 .charge-signs {
     font-weight: bold;
+}
+
+#return-link {
+    background-color: rgb(127, 213, 224);
+    margin: 3rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    display: block;
+    text-align: center;
+    box-shadow: 5px 6px 17px -1px rgba(0, 0, 0, 0.54);
+    -webkit-box-shadow: 5px 6px 17px -1px rgba(0, 0, 0, 0.54);
+    -moz-box-shadow: 5px 6px 17px -1px rgba(0, 0, 0, 0.54);
+    color: black;
+    text-decoration: none;
 }
