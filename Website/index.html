@@ -517,21 +517,15 @@
 
                 <br><br>
 
-                In the table below I marked which features were important in which models.
-
-                <br><br>
-
-                * I grouped some features together in the table that had similar concepts. For example subject age and
-                partner age both relate to age and they are correlated, so for simplicity I grouped them together in the
+                In the table below, I grouped together similar features into their general concepts. For example
+                "subjectAge" and
+                "partnerAge" both relate to age, and they are correlated, so for simplicity I grouped them together in
+                the
                 table below as "Age."
+
                 <br><br>
-                * Met as coworkers and met as work neighbors have also been grouped together as they are similar topics.
-                Checking the codebook, there does not seem to be any distinction between the two, yet in the
-                classification model meeting as coworkers seemed to decrease the probabilty of a "good" rated
-                relationship, but in the regression model meeting as "work neighbors" seemed to increase how highly a
-                subject rated their relationship. These are contradictory results, but since are workmates related, a
-                conclusion we could make is the relationship between being workmates and having a "good" relationship is
-                worth investigating further.
+
+                With this table we can see which general concepts popped up as significant in which models.
             </p>
 
 
@@ -629,33 +623,42 @@
             <!-- CLOSING WORDS -->
 
             <p>
-                It seems the general concepts that appeared in more than one model were number of household minors, age,
-                education, income, living together, and sex frequency. It seems more of any of these is generally
+                It seems the general concepts that appeared in more than one model were
+                <span class="bold">number of household minors</span>,
+                <span class="bold">age</span>,
+                <span class="bold">education</span>,
+                <span class="bold">income</span>,
+                <span class="bold">living together</span>, and
+                <span class="bold">sex frequency</span>.
+                More of any of these seems to be
                 correlated with higher likelihood a subject would rate their relationship as "good."
 
                 <br><br>
 
-                Meeting as workmates seems to be a topic that is generally correlated with relationship quality as well,
-                but where meeting as coworkers hinted at lower relationship quality in the classification model, meeting
-                as
-                work neighbors hinted at higher relationship quality in the regression model. When consulting the
+                Meeting as <span class="bold">workmates</span> also seems to have correlation with relationship quality,
+                but there seems to be conflicting results.
+                "metAs_coworkers" is correlated with <span class="ital">lower</span> likelihood of
+                "good" relationship
+                quality, while "metAs_workNeighbors" was correlated with <span class="ital">higher</span> liklihood.
+                When consulting the
                 codebook, it was unclear what the distinction was
                 between
                 "coworkers"
                 and
-                "work neighbors" were if any. But in general it seems meeting at work has some significance.
+                "work neighbors" were, if any.
 
                 <br><br>
 
-
-                The relationship between all these concepts and relationship quality might be worth investigating
+                The relationship between these seven concepts and relationship quality might be worth investigating
                 further
                 with future studies and more relationship data.
 
                 <br><br>
 
-                This analysis is done on just one dataset of couples. Relationships in the real world might be very
-                different. Just because a couple is of certain ages, races, education levels, or incomes it neither
+                As a quick reminder, correlation does not mean causation. This analysis is done on just one dataset of
+                couples. Relationships in the real world might be very different.
+
+                Just because a couple is of certain ages, races, education levels, or incomes it neither
                 means their relationship is doomed to fail, nor destined to succeed.
 
 
