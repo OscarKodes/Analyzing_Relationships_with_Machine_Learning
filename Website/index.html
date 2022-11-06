@@ -60,11 +60,11 @@
                 For this project, I had a few general research questions:
                 <ul>
                     <li>
-                        Can any features in this dataset help predict how a subject would self-rate their relationship
-                        quality?
+                        Do couples that meet on dating apps have higher or lower quality relationships?
                     </li>
                     <li>
-                        Do couples that meet on dating apps have higher or lower quality relationships?
+                        Can any features in this dataset help predict how a subject would self-rate their relationship
+                        quality?
                     </li>
                     <li>
                         What insights can I derive from using machine learning for exploratory analysis?
@@ -125,14 +125,16 @@
                 <!-- VIS DESCRIPTION -->
 
                 <p class="super-text1 n1">
-                    This barchart shows the features within the dataset that had the strongest correlations with each
+                    This barchart shows the <span class="ital">numerical</span> features within the dataset that had the
+                    strongest correlations with each
                     other based on the
                     correlation matrix conducted in the <a
                         href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/1%20-%20Exploratory%20Analysis%20.ipynb">
                         EDA notebook</a>.
                 </p>
                 <p class="super-text1 n2">
-                    This barchart shows the features that had the strongest correlations with relationship quality
+                    This barchart shows the <span class="ital">numerical</span> features that had the strongest
+                    correlations with relationship quality
                     ratings based
                     on the correlation matrix conducted in the <a
                         href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/1%20-%20Exploratory%20Analysis%20.ipynb">EDA
@@ -160,8 +162,8 @@
                 <!-- DYNAMIC BAR VIS -->
 
                 <div id="bar-vis" class="vis">
-                    <h3 class="vis-title n1">Top Correlations between Features</h3>
-                    <h3 class="vis-title n2">Top Correlations between Features & Relationship Quality</h3>
+                    <h3 class="vis-title n1">Top Correlations between Numeric Features</h3>
+                    <h3 class="vis-title n2">Top Correlations between Numeric Features & Relationship Quality</h3>
                     <h3 class="vis-title n3">Classification Feature Coefficients</h3>
                     <h3 class="vis-title n4">Regression Feature Coefficients</h3>
                 </div>
@@ -175,7 +177,7 @@
 
                     <div class="bullet-list">
                         <ul>
-                            Notable Findings:
+                            Interesting Findings:
                             <li><span class="bold">Political Views: </span>Subjects were more likely to be with partners
                                 that had similar
                                 political views.</li>
@@ -209,7 +211,7 @@
 
                     <div class="bullet-list">
                         <ul>
-                            Notable findings:
+                            Interesting findings:
                             <li>
                                 A subject was more likely to self-rate their relationships as "good" if the couple had:
                                 <ul>
@@ -235,7 +237,7 @@
 
                     <div class="bullet-list">
                         <ul>
-                            Notable findings:
+                            Interesting findings:
                             <li>
                                 A subject was more likely to self-rate their relationships as "good" if the couple had:
                                 <ul>
@@ -262,7 +264,7 @@
 
                     <div class="bullet-list">
                         <ul>
-                            Notable findings:
+                            Interesting findings:
                             <li>
                                 A subject was more likely to self-rate their relationships as "good" if the couple had:
                                 <ul>
@@ -450,7 +452,7 @@
 
                 <div class="bullet-list">
                     <ul>
-                        Notable findings:
+                        Interesting findings:
                         <li>
                             A subject was more likely to self-rate their relationships as "good" if the couple had:
                             <ul>
@@ -483,48 +485,42 @@
             <h2>Conclusion (Longer)</h2>
 
             <p>
-                Can any features in this dataset help predict how a subject would self-rate their relationship
-                quality?
+                <span class="ital">
+                    Do couples that meet on dating apps have higher or lower quality relationships?
+                </span>
 
                 <br><br>
 
-                Yes.
+                In the all the models built, it seems there was no statistical significance between meeting on dating
+                apps and self-rated relationship quality.
 
                 <br><br>
 
-                Do couples that meet on dating apps have higher or lower quality relationships?
+                <span class="ital">
+                    What insights can I derive from using machine learning for exploratory analysis? Can any features in
+                    this dataset help predict how a subject would self-rate their relationship
+                    quality?
+                </span>
 
                 <br><br>
 
-                No, there does not seem to be any statistical significance.
+                Some interesting findings are that the education levels and political views of subjects and their
+                partners tend to be about the same. The older a subject was when the couple first met, the larger their
+                age gap tended to be and the shorter it took for them to become a couple.
 
                 <br><br>
 
-                What insights can I derive from using machine learning for exploratory analysis?
-
-                <br><br>
-
-
-
-                (When consulting the codebook, it was unclear what the distinction was
-                between
-                "coworkers"
-                and
-                "work neighbors" were if any.)
-
-                <br><br>
-                (Note all the correlations were pretty weak & self-rated may not be the most reliable. But for the
-                purposes of exploration, the findings derived here can help lead to future research.)
-            </p>
-
-            <p>
-
-                A feature may show up as significant in one model, but maybe it wouldn't be so significant in other
+                As for the best features to predict relationship quality, a feature may show up as significant in one
+                model, but maybe it wouldn't be so significant in other
                 models. In the efforts for exploratory analysis, if a feature appeared as signifigant in multiple models
-                surely, there is something worth investigating there.
+                surely, there is something worth further investigation here.
+
                 <br><br>
+
                 In the table below I marked which features were important in which models.
+
                 <br><br>
+
                 * I grouped some features together in the table that had similar concepts. For example subject age and
                 partner age both relate to age and they are correlated, so for simplicity I grouped them together in the
                 table below as "Age."
@@ -634,11 +630,26 @@
 
             <p>
                 It seems the general concepts that appeared in more than one model were number of household minors, age,
-                education, income, living together, workmates, and sex frequency.
+                education, income, living together, and sex frequency. It seems more of any of these is generally
+                correlated with higher likelihood a subject would rate their relationship as "good."
 
                 <br><br>
 
-                The relationship between these concepts and relationship quality might be worth investigating further
+                Meeting as workmates seems to be a topic that is generally correlated with relationship quality as well,
+                but where meeting as coworkers hinted at lower relationship quality in the classification model, meeting
+                as
+                work neighbors hinted at higher relationship quality in the regression model. When consulting the
+                codebook, it was unclear what the distinction was
+                between
+                "coworkers"
+                and
+                "work neighbors" were if any. But in general it seems meeting at work has some significance.
+
+                <br><br>
+
+
+                The relationship between all these concepts and relationship quality might be worth investigating
+                further
                 with future studies and more relationship data.
 
                 <br><br>
@@ -647,21 +658,14 @@
                 different. Just because a couple is of certain ages, races, education levels, or incomes it neither
                 means their relationship is doomed to fail, nor destined to succeed.
 
-                <br><br>
-                "Love is unpredictable and it's frustrating and it's tragic and it's beautiful.” - Taylor Swift
 
                 <br><br>
                 "I've learned that you can't predict or plan for it. For someone like me who is obsessed with
                 organization and planning, I love the idea that love is the one exception to that. Love is the one wild
                 card." - Taylor Swift
 
-                <br><br>
-                "People fall in love without reason, without even wanting it. You can't predict it. That's love." -
-                Haruki Murakami
-
 
             </p>
-
 
         </div>
 
