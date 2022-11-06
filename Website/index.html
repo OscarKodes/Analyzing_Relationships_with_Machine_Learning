@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Analyzing Relationships with Machine Learning</title>
+    <title>Exploring Relationships with Machine Learning</title>
 
     <!-- Local CSS -->
     <link rel="stylesheet" href="styles.css">
@@ -17,7 +17,7 @@
 
         <div id="title" class="section">
 
-            <h1>Analyzing Relationships with Machine Learning</h1>
+            <h1>Exploring Relationships with Machine Learning</h1>
 
             <p class="by-line">
                 By <a href="https://www.oscarko.net">Oscar Ko</a>
@@ -31,14 +31,28 @@
             </div>
 
             <p>
-                What can we learn about relationships by using machine learning for exploratory analysis?
+                What can we learn about relationships with machine learning?
                 <br><br>
-                The dataset was taken from a Stanford University survey called, "<a
+                This dataset was taken from a Stanford University survey called, "<a
                     href="https://data.stanford.edu/hcmst2017">How Couples Meet and Stay Together 2017</a>." This
                 dataset contains many variables including age, education level, political party, income, usage of dating
                 apps, and quality of relationship (as self-rated by the subject). To prepare this data for analysis, I
-                renamed and recoded a few features. The specific cleaning steps I took can be seen in this <a
-                    href="">Jupyter notebook</a>. During the cleaning process, I also consulted this <a
+                renamed and recoded a few features.
+
+                <br><br>
+                For example, one notable change I made was for the relationship
+                quality variable. It was originally based on a scale from 1 to 5; 1 being "Excellent," 2 being "Good,"
+                and 5
+                being "Very Poor." I created a new binary variable that only specified whether or not if a couple was
+                "good" or "not good." Couples that were rated as "good" or "excellent" in the original outcome varible,
+                were categorized as "good" in the categorical outcome. For the regression models I conducted, I flipped
+                the values of the original outcome varible, so 5 was "Excellent" and 1 was "Very Poor." This helped make
+                interpretation more intuitive.
+
+                <br><br>
+
+                All the specific cleaning steps I took can be seen in
+                this <a href="">Jupyter notebook</a>. During the cleaning process, I also consulted this <a
                     href="https://stacks.stanford.edu/file/druid:vt073cc9067/HCMST_2017_fresh_Codeboodk_v1.1a.pdf">codebook</a>.
             </p>
 
@@ -46,7 +60,8 @@
                 For this project, I had a few general research questions:
                 <ul>
                     <li>
-                        Can any features in this dataset help predict a subject's relationship quality rating?
+                        Can any features in this dataset help predict how a subject would self-rate their relationship
+                        quality?
                     </li>
                     <li>
                         Do couples that meet on dating apps have higher or lower quality relationships?
@@ -77,7 +92,7 @@
         <!-- NOTEBOOK RESULTS VIS SECTION -->
 
         <div id="notebook-vis" class="section">
-            <h2>Machine Learning Notebook Results</h2>
+            <h2>Machine Learning Analysis</h2>
 
             <p>
                 I analyzed this dataset by creating four notebooks where I conducted Exploratory Data Analysis,
@@ -97,7 +112,7 @@
                     <option value="2">Top Correlations with Relationship Quality</option>
                     <option value="3">Classification Backwards Elimination</option>
                     <option value="4">Regression Backwards Elimination</option>
-                    <option value="5">Principal Component Analysis (Unsupervised)</option>
+                    <option value="5">Principal Component Analysis</option>
                 </select>
             </div>
 
@@ -110,30 +125,33 @@
                 <!-- VIS DESCRIPTION -->
 
                 <p class="super-text1 n1">
-                    This barchart shows the features that had the strongest correlations with each other based on the
+                    This barchart shows the features within the dataset that had the strongest correlations with each
+                    other based on the
                     correlation matrix conducted in the <a
                         href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/1%20-%20Exploratory%20Analysis%20.ipynb">
                         EDA notebook</a>.
                 </p>
                 <p class="super-text1 n2">
-                    This barchart shows the features that had the strongest correlations with relationship quality based
+                    This barchart shows the features that had the strongest correlations with relationship quality
+                    ratings based
                     on the correlation matrix conducted in the <a
                         href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/1%20-%20Exploratory%20Analysis%20.ipynb">EDA
                         notebook</a>.
                 </p>
                 <p class="super-text1 n3">
-                    This barchart shows the features left in my Logistic Regression model (for predicting relationship
-                    quality) after conducting backwards elimination to remove all features that were more likely to be
-                    statistically insignifgant (where their alpha levels were over p = .05). The specific steps I took
+                    This barchart shows the features remaining in the Logistic Regression model after conducting
+                    backwards elimination to remove
+                    statistically insignificant features (where their alpha levels were over p = .05). The specific
+                    steps I took
                     can be found in the <a
                         href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/2%20-%20Classification.ipynb">classification
                         notebook</a>.
                 </p>
                 <p class="super-text1 n4">
-                    This barchart shows the features left in my Linear Regression model (for predicting relationship
-                    quality) after conducting backwards elimination to remove all features that were more likely to be
-                    statistically insignifgant (where their alpha levels were over p = .05). The specific steps I took
-                    can be found in the $<a
+                    This barchart shows the features left in my Linear Regression model after conducting backwards
+                    elimination to remove all features that were statistically insignificant (where their alpha levels
+                    were over p = .05). The specific steps I took
+                    can be found in the <a
                         href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/3%20-%20Regression.ipynb">regression
                         notebook</a>.
                 </p>
@@ -144,77 +162,127 @@
                 <div id="bar-vis" class="vis">
                     <h3 class="vis-title n1">Top Correlations between Features</h3>
                     <h3 class="vis-title n2">Top Correlations between Features & Relationship Quality</h3>
-                    <h3 class="vis-title n3">Classification Model Feature Coefficients</h3>
-                    <h3 class="vis-title n4">Regression Model Feature Coefficients</h3>
+                    <h3 class="vis-title n3">Classification Feature Coefficients</h3>
+                    <h3 class="vis-title n4">Regression Feature Coefficients</h3>
                 </div>
 
 
                 <!-- NOTABLE FINDINGS -->
 
                 <div class="super-text2 n1">
-                    <p>All the correlations between the feature pairs above had a p-value of 0.</p>
-                    <ul>
-                        Notable findings:
-                        <li>Subjects were more likely to have partners that had similar political leanings.</li>
-                        <li>Subjects were more likely to have partners that had similar education levels.</li>
-                        <li>The older a subject was when meeting their partner, the larger their age gap tended to be.
-                        </li>
-                        <li>As subjects were likely to have partners that had similar education levels, their mothers
-                            were also likely to have similar education levels.</li>
-                        <li>The older a subject was when they met their partner, the shorter it took for them to become
-                            a couple.</li>
-                    </ul>
+                    <p>All the correlations between the feature pairs above had a p-value of 0, so there is statistical
+                        significance.</p>
+
+                    <div class="bullet-list">
+                        <ul>
+                            Notable Findings:
+                            <li><span class="bold">Political Views: </span>Subjects were more likely to be with partners
+                                that had similar
+                                political views.</li>
+                            <li><span class="bold">Education: </span>Subjects were more likely to be with partners that
+                                had similar education
+                                levels.</li>
+                            <ul>
+                                <li>
+                                    As there is correlation between a subject's and their mother's education
+                                    levels, the
+                                    couple's
+                                    mothers
+                                    were also likely to have similar education levels with each other.
+                                </li>
+                            </ul>
+
+                            <li><span class="bold">Age: </span>The older a subject was when the couple first met, the
+                                larger their age gap tended
+                                to
+                                be <span class="ital">and</span> the shorter it took for them to
+                                become
+                                a couple.</li>
+                        </ul>
+                    </div>
+
                 </div>
 
                 <div class="super-text2 n2">
-                    <p>All the top correlations with rQual shown had p-values below 0.05.</p>
-                    <ul>
-                        Notable findings:
-                        <li>Income: When couples had higher household incomes, the relationship was more likely to be
-                            self-rated as 'good.'</li>
-                        <li>Education: When couples had higher education levels, the relationship was more likely to be
-                            self-rated as 'good.'</li>
-                        <li>Age: When couples were older, the relationship was more likely to be self-rated as 'good.'
-                        </li>
-                        <li>Children: When the subject's household had more members below the age of 18, the
-                            relationship was less likely to be self-rated as 'good.'</li>
-                    </ul>
+                    <p>All the top correlations with rQual shown had p-values below 0.05, so there is statistical
+                        significance.</p>
+
+                    <div class="bullet-list">
+                        <ul>
+                            Notable findings:
+                            <li>
+                                A subject was more likely to self-rate their relationships as "good" if the couple had:
+                                <ul>
+                                    <li>Higher household income</li>
+                                    <li>Higher education levels</li>
+                                    <li>Older age</li>
+                                </ul>
+                            </li>
+                            <li>
+                                A subject was less likely to self-rate their relationships as "good" if the couple had:
+                                <ul>
+                                    <li>More household members below the age of 18</li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+
                 </div>
 
                 <div class="super-text2 n3">
                     <p>Classification</p>
-                    <ul>
-                        Notable findings:
-                        <li>Income: When couples had higher household incomes, the relationship was more likely to be
-                            self-rated as 'good.'</li>
-                        <li>Education: When couples had higher education levels, the relationship was more likely to be
-                            self-rated as 'good.'</li>
-                        <li>Age: When couples were older, the relationship was more likely to be self-rated as 'good.'
-                        </li>
-                        <li>Sex Frequency: When the couple had sex at least once a week or more, the relationship was
-                            more likely to be self-rated as 'good.'</li>
-                    </ul>
+
+                    <div class="bullet-list">
+                        <ul>
+                            Notable findings:
+                            <li>
+                                A subject was more likely to self-rate their relationships as "good" if the couple had:
+                                <ul>
+                                    <li>Higher household income</li>
+                                    <li>Higher education levels</li>
+                                    <li>Older age</li>
+                                    <li>Sex frequency of once a week or more</li>
+                                </ul>
+                            </li>
+                            <li>
+                                A subject was less likely to self-rate their relationships as "good" if the couple had:
+                                <ul>
+                                    <li>Sex frequency of once a month or less</li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+
                 </div>
 
                 <div class="super-text2 n4">
                     <p>Regression</p>
-                    <ul>
-                        Notable findings:
-                        <li>Income: When couples had higher household incomes, the relationship was more likely to be
-                            self-rated as 'good.'</li>
-                        <li>Equal Earnings: When couples earned about the same amount of income, the relationship was
-                            more likely to be self-rated as 'good.'</li>
-                        <li>School : When couples met in school, the relationship was more likely to be self-rated as
-                            'good.'</li>
-                        <li>Work Neighbors: When couples met as work neighbors*, the relationship was more likely to be
-                            self-rated as 'good.'</li>
-                        <li>Age: When couples were older, the relationship was more likely to be self-rated as 'good.'
-                        </li>
-                        <li>Sex Frequency: When the couple had sex at least once a week or more, the relationship was
-                            more likely to be self-rated as 'good.'</li>
-                    </ul>
-                    <p>* When consulting the codebook, it was unclear what the distinction was between coworkers and
-                        work neighbors if any.</p>
+
+                    <div class="bullet-list">
+                        <ul>
+                            Notable findings:
+                            <li>
+                                A subject was more likely to self-rate their relationships as "good" if the couple had:
+                                <ul>
+                                    <li>Higher household income</li>
+                                    <li>About the same income earnings as each other</li>
+                                    <li>Older age</li>
+                                    <li>Sex frequency of once a week or more</li>
+                                    <li>Met in school</li>
+                                    <li>Met as "work neighbors"</li>
+                                </ul>
+                            </li>
+                            <li>
+                                A subject was less likely to self-rate their relationships as "good" if the couple had:
+                                <ul>
+                                    <li>Sex frequency of once a month or less</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </div>
                 </div>
 
                 <a id="notebook-link" href="">Link
@@ -230,7 +298,8 @@
                 <!-- DESCRIPTION -->
 
                 <p>
-                    PCA, Principal Component Analysis, sees an entire dataset as a big data blob. The areas of this blob
+                    PCA, Principal Component Analysis, treats an entire dataset as a big data blob. The areas of this
+                    blob
                     that
                     stretch out the farthest (the areas with the most variation) are selected as the "principal
                     components." The
@@ -269,7 +338,7 @@
                 <!-- TEXT INTERPRET -->
 
                 <p>
-                    The value of each feature shown is how much contributes to that principal component.
+                    The values of the features here shows is how they contribute to that principal component.
 
                     <br><br>
                     The grey colored rectangles have values closer to 0, so they don't contribute much to that
@@ -281,7 +350,8 @@
                     increasing along this axis would represent more of that feature.
 
                     <br><br>
-                    For example, Component 0 has the number of household minors colored in yellow, so as you go forward
+                    For example, Component 0 has the feature "householdMinor_num" colored in yellow, so as you go
+                    forward
                     on this axis, the subjects tend to have more children at home.
 
                     <br><br>
@@ -289,10 +359,10 @@
                     increasing along this axis would represent less of that feature.
 
                     <br><br>
-                    For example, Component 0 has the partner's age colored in black, so as you go forward on this axis,
+                    For example, Component 0 has the feature "partnerAge" colored in black, so as you go forward on this
+                    axis,
                     the
                     subjects tend to have younger partners.
-
                     <br><br>
                 </p>
 
@@ -302,13 +372,17 @@
                     <h4 class="component-title">Component 0</h4>
 
                     <div class="bullet-list">
+                        <p class="charge-signs">Positive</p>
+                        <ul>
+                            <li>Number of minors in household (strong)</li>
+                            <li>Partner's mother education (strong)</li>
+                        </ul>
 
-                        <p class="charge-signs">Positive Signs</p>
-                        <li>Number of minors in household (strong)</li>
-                        <li>Partner's mother education (strong)</li>
-                        P
-                        <p class="charge-signs">Negative Signs</p>
-                        <li>Partner's Age (strong)</li>
+                        <p class="charge-signs">Negative</p>
+                        <ul>
+                            <li>Partner's Age (strong)</li>
+                        </ul>
+
                     </div>
 
 
@@ -317,12 +391,18 @@
 
                     <div class="bullet-list">
 
-                        <p class="charge-signs">Positive Signs</p>
-                        <li>Household income (strong)</li>
-                        <li>Partner's mother education (strong)</li>
+                        <p class="charge-signs">Positive</p>
+                        <ul>
+                            <li>Household income (strong)</li>
+                            <li>Partner's mother education (strong)</li>
+                        </ul>
 
-                        <p class="charge-signs">Negative Signs</p>
-                        <li>Number of minors in household (moderate)</li>
+
+                        <p class="charge-signs">Negative</p>
+                        <ul>
+                            <li>Number of minors in household (moderate)</li>
+                        </ul>
+
                     </div>
 
                 </ul>
@@ -343,42 +423,50 @@
                     <br><br>
 
                     While the areas at the bottom and at the right have less blue dots, it seems there are just less
-                    dots there overall.
+                    dots there overall, so nothing can be said there.
 
                     <br><br>
 
-                    Interestingly, the far top and far left areas have few blue dots, but still a decent amount of
+                    Interestingly, the far top and far left areas have few blue dots but still a decent amount of
                     yellow dots!
 
                     <br><br>
 
                     Using the heatmap of component 1 for interpretation, it seems cases at the far top of this
-                    scatterplot have subjects that tend to have higher household income, more education, and slightly
+                    scatterplot have subjects of higher household income, more education, and slightly
                     less children living at home. (The feature here was for the partner's mother's education, but as
                     seen with the correlations in the other notebooks, the education levels of the subject, partner, and
                     their mothers all have some correlation.)
 
                     <br><br>
 
-                    Using the heatmap of component 0 for interpreation, cases at the far left of this scatterplot have
-                    subjects that tend to have more education, less children living at home, and older age. (The feature
+                    Using the heatmap of component 0 for interpretation, cases at the far left of this scatterplot have
+                    subjects of more education, less children living at home, and older age. (The feature
                     here was for the partner's age, but as seen with the correlations in the other notebooks, subjects
                     tended to be in relationships with partners of similar age.)
 
                     <br><br>
                 </p>
 
-                <ul>
-                    Notable findings:
-                    <li>Income: When couples had higher household incomes, the relationship was more likely to be
-                        self-rated as 'good.'</li>
-                    <li>Education: When couples had higher education levels, the relationship was more likely to be
-                        self-rated as 'good.'</li>
-                    <li>Age: When couples were older, the relationship was more likely to be self-rated as 'good.'
-                    </li>
-                    <li>Children: When the subject's household had more members below the age of 18, the
-                        relationship was less likely to be self-rated as 'good.'</li>
-                </ul>
+                <div class="bullet-list">
+                    <ul>
+                        Notable findings:
+                        <li>
+                            A subject was more likely to self-rate their relationships as "good" if the couple had:
+                            <ul>
+                                <li>Higher household income</li>
+                                <li>More education</li>
+                                <li>Older age</li>
+                            </ul>
+                        </li>
+                        <li>
+                            A subject was less likely to self-rate their relationships as "good" if the couple had:
+                            <ul>
+                                <li>More household members below the age of 18</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
 
                 <a id="notebook-link">Link to the selected notebook</a>
             </div>
@@ -395,30 +483,38 @@
             <h2>Conclusion (Longer)</h2>
 
             <p>
-                Can any features in this dataset help predict a subject's relationship quality rating?
-                <br>
-                Yes, it seems the best features in this dataset for predicting relationship quality are age, education,
-                income, and number of children living in household.[Add more later]
+                Can any features in this dataset help predict how a subject would self-rate their relationship
+                quality?
 
-                As a note, correlation between a predictor variable and the outcome variable does not mean causation or
-                even chronological order. For example, couples living together have correlation with relationships rated
-                as "good." Maybe a couple is happy together and they decide to live together, but also maybe by living
-                together it helped strengthen their bond.
-                <br>
+                <br><br>
+
+                Yes.
+
+                <br><br>
+
                 Do couples that meet on dating apps have higher or lower quality relationships?
-                <br>
-                Whether it was in the correlation matrix or in the machine learning models, having met on dating apps
-                did not come up as a significant feature in any of them. So it seems whether or not a couple has met on
-                dating apps is not a good predictor for relationship quality.
-                <br>
+
+                <br><br>
+
+                No, there does not seem to be any statistical significance.
+
+                <br><br>
+
                 What insights can I derive from using machine learning for exploratory analysis?
-                <br>
-                (Aside from the findings of the features above)
-                - Subjects were more likely to have partners that had:
-                - similar political leanings
-                - similar education levels
-                - Older subjects have larger age gaps in their relationships
-                - The older a subject was when they met their partner, the shorter it took for them to become a couple.
+
+                <br><br>
+
+
+
+                (When consulting the codebook, it was unclear what the distinction was
+                between
+                "coworkers"
+                and
+                "work neighbors" were if any.)
+
+                <br><br>
+                (Note all the correlations were pretty weak & self-rated may not be the most reliable. But for the
+                purposes of exploration, the findings derived here can help lead to future research.)
             </p>
 
             <p>
@@ -426,13 +522,13 @@
                 A feature may show up as significant in one model, but maybe it wouldn't be so significant in other
                 models. In the efforts for exploratory analysis, if a feature appeared as signifigant in multiple models
                 surely, there is something worth investigating there.
-                <br>
+                <br><br>
                 In the table below I marked which features were important in which models.
-                <br>
+                <br><br>
                 * I grouped some features together in the table that had similar concepts. For example subject age and
                 partner age both relate to age and they are correlated, so for simplicity I grouped them together in the
                 table below as "Age."
-                <br>
+                <br><br>
                 * Met as coworkers and met as work neighbors have also been grouped together as they are similar topics.
                 Checking the codebook, there does not seem to be any distinction between the two, yet in the
                 classification model meeting as coworkers seemed to decrease the probabilty of a "good" rated

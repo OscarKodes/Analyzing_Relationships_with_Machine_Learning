@@ -290,3 +290,11 @@ tbody tr:not([highlight]) {
     color: black;
     text-decoration: none;
 }
+
+.ital {
+    font-style: italic;
+}
+
+.bold {
+    font-weight: bold;
+}
