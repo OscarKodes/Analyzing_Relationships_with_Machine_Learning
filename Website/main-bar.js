@@ -198,7 +198,7 @@ function draw() {
                 .attr("x", d => d.score > 0 ? 
                                 0 : -(xScale(0) - xScale(d.score)))
                 ),
-              // update => update,
+              update => update,
               exit => exit
                 .call(exit => exit.transition()
                   .remove()
@@ -233,7 +233,7 @@ function draw() {
                           + (isMobile ? 0 : 75) 
                           + (+state.notebook > 2 ? +state.notebook * -5 : 0))
               ),
-            // update => update,
+            update => update,
             exit => exit
                 .call(exit => exit.transition()
                 .remove()
