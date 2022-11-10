@@ -15,7 +15,6 @@ const margin = {
   right: 55
 };
 
-// const formatDate = d3.time.format("%Y-%m-%d");
 
 d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
     .then(data => {
@@ -71,7 +70,7 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
     
 
     // Draw SVG Scatterplot ==========================================
-    const dots = svg.selectAll("circle.dot")
+    svg.selectAll("circle.dot")
         .data(
             data.sort((a, b) => b.relationshipQuality_isGood - a.relationshipQuality_isGood), 
             d => d.id)
@@ -81,28 +80,19 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
                 .attr("class", "dot")
                 .attr("transform", d => `translate(${xScale(d.comp0) }, 
                                         ${yScale(d.comp1)})`)
-                .attr("r", isMobile ? 8 : 6)
+                )
                 .attr("fill", d => colorScale(d.relationshipQuality_isGood))
                 .attr("stroke", "black")
                 .attr("stroke-width", "1px")
                 .attr("fill-opacity", ".65")
-                // .on("mouseover", tipMouseover)
-                // .on("mouseout", tipMouseout)
-            // .call(enter => enter.transition()
-            //     .duration(500)
-            //     .attr("r", d => sizeScale(d["Budget (million $)"]))
-            //     ),
-            ,
-            update => update
-            // .attr("opacity", "1")
-            // .call(update => update.transition()
-            //     .duration(1000)
-            //     .attr("opacity", "0.4")),
-            ,
+                .attr("r", d => d.relationshipQuality_isGood ? isMobile ? 8 : 6 : 0)
+            .call(enter => enter.transition()
+                .delay(5000)
+                .duration(5000)
+                .attr("r", isMobile ? 8 : 6)
+                ,
+            update => update,
             exit => exit
-            // .call(exit => exit.transition()
-            //     .duration(500)
-            //     .attr("r", 0))
                 .remove()
         );
 
@@ -155,3 +145,6 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
       .style("font-family", "monospace")
       .attr("alignment-baseline","middle")
 });
+
+
+

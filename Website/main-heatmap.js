@@ -93,11 +93,14 @@ d3.csv('data_to_visualize/5-unsupervised_component_0_1.csv', d3.autoType)
                         .attr("width", xScale.bandwidth())
                         .attr("x", d => xScale(d.feature) + margin.left)
                         .attr("y", d => yScale(d.component) + margin.top )
-                        .attr("fill", d => colorScale(d.score))
+                        .attr("fill", colorScale(0))
                         // .attr("transform", `translate(${margin.left + xScale(0)}, 0)`)
                         .attr("stroke", "black")
-                      .call(enter => enter.transition()
-                      ),
+                      .call(enter =>  enter.transition()
+                        .delay(5000)
+                        .duration(2000)
+                        .attr("fill", d => colorScale(d.score)))
+                      ,
                       update => update,
                       exit => exit
                         .call(exit => exit.transition()
