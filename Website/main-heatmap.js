@@ -83,27 +83,27 @@ d3.csv('data_to_visualize/5-unsupervised_component_0_1.csv', d3.autoType)
 
 
     // boxes
-    svg.selectAll(".box")
-        .data(data)
-        .join(
-            enter => enter
-              .append("rect")
-                .attr("class", "box")
-                .attr("height", yScale.bandwidth())
-                .attr("width", xScale.bandwidth())
-                .attr("x", d => xScale(d.feature) + margin.left)
-                .attr("y", d => yScale(d.component) + margin.top )
-                .attr("fill", d => colorScale(d.score))
-                // .attr("transform", `translate(${margin.left + xScale(0)}, 0)`)
-                .attr("stroke", "black")
-              .call(enter => enter.transition()
-              ),
-              update => update,
-              exit => exit
-                .call(exit => exit.transition()
-                  .remove()
-                )
-        );
+    const boxes = svg.selectAll(".box")
+                .data(data)
+                .join(
+                    enter => enter
+                      .append("rect")
+                        .attr("class", "box")
+                        .attr("height", yScale.bandwidth())
+                        .attr("width", xScale.bandwidth())
+                        .attr("x", d => xScale(d.feature) + margin.left)
+                        .attr("y", d => yScale(d.component) + margin.top )
+                        .attr("fill", d => colorScale(d.score))
+                        // .attr("transform", `translate(${margin.left + xScale(0)}, 0)`)
+                        .attr("stroke", "black")
+                      .call(enter => enter.transition()
+                      ),
+                      update => update,
+                      exit => exit
+                        .call(exit => exit.transition()
+                          .remove()
+                        )
+                );
 
         // Color dots for Legend
         svg.selectAll(".legend")
@@ -150,4 +150,20 @@ d3.csv('data_to_visualize/5-unsupervised_component_0_1.csv', d3.autoType)
     .style("font-weight", "bold")
     .style("font-size", "2.2rem")
     .text("Features");
+
+
+    // ============================================
+
+    // set default arrows on tool tips
+    tippy.setDefaults({
+      "arrow": true
+    })
+
+    // set the tooltip content
+    boxes
+      .attr("data-tippy-content", d => d.score.toFixed(2))
+
+
+    // call tippy on the boxes
+    tippy(boxes.nodes());
 });
