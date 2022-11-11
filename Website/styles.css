@@ -326,3 +326,18 @@ tbody tr:not([highlight]) {
 .bold {
     font-weight: bold;
 }
+
+.toggle-btn {
+    width: 100%;
+    font-size: 2.5rem;
+    padding: 1rem;
+}
+
+.collapsable {
+    border-color: black;
+    border-style: solid;
+    border-width: 3px;
+    background-color: rgb(245, 245, 245);
+    margin: 1rem 1rem 3rem 1rem;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
+}

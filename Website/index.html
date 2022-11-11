@@ -32,29 +32,45 @@
 
             <p>
                 What can we learn about relationships with machine learning?
-                <br><br>
-                This dataset was taken from a Stanford University survey called, "<a
-                    href="https://data.stanford.edu/hcmst2017">How Couples Meet and Stay Together 2017</a>." This
-                dataset contains many variables including age, education level, political party, income, usage of dating
-                apps, and quality of relationship (as self-rated by the subject). To prepare this data for analysis, I
-                renamed and recoded a few features.
-
-                <br><br>
-                For example, one notable change I made was for the relationship
-                quality variable. It was originally based on a scale from 1 to 5; 1 being "Excellent," 2 being "Good,"
-                and 5
-                being "Very Poor." I created a new binary variable that only specified whether or not if a couple was
-                "good" or "not good." Couples that were rated as "good" or "excellent" in the original outcome varible,
-                were categorized as "good" in the categorical outcome. For the regression models I conducted, I flipped
-                the values of the original outcome varible, so 5 was "Excellent" and 1 was "Very Poor." This helped make
-                interpretation more intuitive.
-
-                <br><br>
-
-                All the specific cleaning steps I took can be seen in
-                this <a href="">Jupyter notebook</a>. During the cleaning process, I also consulted this <a
-                    href="https://stacks.stanford.edu/file/druid:vt073cc9067/HCMST_2017_fresh_Codeboodk_v1.1a.pdf">codebook</a>.
             </p>
+
+            <div class="collapsable">
+                <button class="toggle-btn">Data Source & Cleaning Process - ↓↑</button>
+
+                <p class="hidden toggle-txt">
+
+                    This dataset was taken from a Stanford University survey called, "<a
+                        href="https://data.stanford.edu/hcmst2017">How Couples Meet and Stay Together 2017</a>." This
+                    dataset contains many variables including age, education level, political party, income, usage of
+                    dating
+                    apps, and quality of relationship (as self-rated by the subject). To prepare this data for analysis,
+                    I
+                    renamed and recoded a few features.
+
+                    <br><br>
+                    For example, one notable change I made was for the relationship
+                    quality variable. It was originally based on a scale from 1 to 5; 1 being "Excellent," 2 being
+                    "Good,"
+                    and 5
+                    being "Very Poor." I created a new binary variable that only specified whether or not if a couple
+                    was
+                    "good" or "not good." Couples that were rated as "good" or "excellent" in the original outcome
+                    varible,
+                    were categorized as "good" in the categorical outcome. For the regression models I conducted, I
+                    flipped
+                    the values of the original outcome varible, so 5 was "Excellent" and 1 was "Very Poor." This helped
+                    make
+                    interpretation more intuitive.
+
+                    <br><br>
+
+                    All the specific cleaning steps I took can be seen in
+                    this <a href="">Jupyter notebook</a>. During the cleaning process, I also consulted this <a
+                        href="https://stacks.stanford.edu/file/druid:vt073cc9067/HCMST_2017_fresh_Codeboodk_v1.1a.pdf">codebook</a>.
+                </p>
+
+            </div>
+
 
             <div class="bullet-list">
                 For this project, I had a few general research questions:
@@ -299,31 +315,40 @@
 
                 <!-- DESCRIPTION -->
 
-                <p>
-                    PCA, Principal Component Analysis, treats an entire dataset as a big data blob. The areas of this
-                    blob
-                    that
-                    stretch out the farthest (the areas with the most variation) are selected as the "principal
-                    components." The
-                    principal components are sorted from most to least variance captured, so visualizing the first two
-                    components as the x and y axes is a good way to investigate a dataset.
+                <div class="collapsable">
+                    <button class="toggle-btn">Text - ↓↑</button>
 
-                    <br><br>
+                    <p class="toggle-txt hidden">
+                        PCA, Principal Component Analysis, treats an entire dataset as a big data blob. The areas of
+                        this
+                        blob
+                        that
+                        stretch out the farthest (the areas with the most variation) are selected as the "principal
+                        components." The
+                        principal components are sorted from most to least variance captured, so visualizing the first
+                        two
+                        components as the x and y axes is a good way to investigate a dataset.
 
-                    When a principal component is used as an axis on a scatterplot, it can be difficult to interpret
-                    because
-                    they take in information from many different features. Visualizing these components on a heatmap
-                    first might
-                    help interpretation.
+                        <br><br>
 
-                    <br><br>
+                        When a principal component is used as an axis on a scatterplot, it can be difficult to interpret
+                        because
+                        they take in information from many different features. Visualizing these components on a heatmap
+                        first might
+                        help interpretation.
 
-                    (As shown on the heatmap below, not all features of the dataset are present. It is
-                    because I selected only the significant features from my classification and regression models to
-                    conduct PCA on. Limiting the number of features helps make interpretation of each principal
-                    component simpler.)
+                        <br><br>
 
-                </p>
+                        (As shown on the heatmap below, not all features of the dataset are present. It is
+                        because I selected only the significant features from my classification and regression models to
+                        conduct PCA on. Limiting the number of features helps make interpretation of each principal
+                        component simpler.)
+
+                    </p>
+
+                </div>
+
+
 
 
 
@@ -339,75 +364,97 @@
 
                 <!-- TEXT INTERPRET -->
 
-                <p>
-                    The values of the features here shows is how they contribute to that principal component.
 
-                    <br><br>
-                    The grey colored rectangles have values closer to 0, so they don't contribute much to that
-                    component. (It doesn't necessarily mean the feature isn't significant. It just means this specific
-                    component's captured variance doesn't have anything to do with that feature.)
+                <div class="collapsable">
+                    <button class="toggle-btn">Txt - ↓↑</button>
 
-                    <br><br>
-                    A yellow colored feature shows that it is positive, so if the component were represented on an axis,
-                    increasing along this axis would represent more of that feature.
+                    <div class="hidden toggle-txt">
 
-                    <br><br>
-                    For example, Component 0 has the feature "householdMinor_num" colored in yellow, so as you go
-                    forward
-                    on this axis, the subjects tend to have more children at home.
+                        <p>
+                            The values of the features here shows is how they contribute to that principal component.
 
-                    <br><br>
-                    A black colored feature shows that it is negative, so if the component were represented on an axis,
-                    increasing along this axis would represent less of that feature.
+                            <br><br>
+                            The grey colored rectangles have values closer to 0, so they don't contribute much to that
+                            component. (It doesn't necessarily mean the feature isn't significant. It just means this
+                            specific
+                            component's captured variance doesn't have anything to do with that feature.)
 
-                    <br><br>
-                    For example, Component 0 has the feature "partnerAge" colored in black, so as you go forward on this
-                    axis,
-                    the
-                    subjects tend to have younger partners.
-                    <br><br>
-                </p>
+                            <br><br>
+                            A yellow colored feature shows that it is positive, so if the component were represented on
+                            an
+                            axis,
+                            increasing along this axis would represent more of that feature.
 
-                <ul>
-                    Notable findings from this heatmap:
+                            <br><br>
+                            For example, Component 0 has the feature "householdMinor_num" colored in yellow, so as you
+                            go
+                            forward
+                            on this axis, the subjects tend to have more children at home.
 
-                    <h4 class="component-title">Component 0</h4>
+                            <br><br>
+                            A black colored feature shows that it is negative, so if the component were represented on
+                            an
+                            axis,
+                            increasing along this axis would represent less of that feature.
 
-                    <div class="bullet-list">
-                        <p class="charge-signs">Positive</p>
+                            <br><br>
+                            For example, Component 0 has the feature "partnerAge" colored in black, so as you go forward
+                            on
+                            this
+                            axis,
+                            the
+                            subjects tend to have younger partners.
+                            <br><br>
+                        </p>
+
                         <ul>
-                            <li>Number of minors in household (strong)</li>
-                            <li>Partner's mother education (strong)</li>
-                        </ul>
+                            Notable findings from this heatmap:
 
-                        <p class="charge-signs">Negative</p>
-                        <ul>
-                            <li>Partner's Age (strong)</li>
+                            <h4 class="component-title">Component 0</h4>
+
+                            <div class="bullet-list">
+                                <p class="charge-signs">Positive</p>
+                                <ul>
+                                    <li>Number of minors in household (strong)</li>
+                                    <li>Partner's mother education (strong)</li>
+                                </ul>
+
+                                <p class="charge-signs">Negative</p>
+                                <ul>
+                                    <li>Partner's Age (strong)</li>
+                                </ul>
+
+                            </div>
+
+
+
+                            <h4 class="component-title">Component 1:</h4>
+
+                            <div class="bullet-list">
+
+                                <p class="charge-signs">Positive</p>
+                                <ul>
+                                    <li>Household income (strong)</li>
+                                    <li>Partner's mother education (strong)</li>
+                                </ul>
+
+
+                                <p class="charge-signs">Negative</p>
+                                <ul>
+                                    <li>Number of minors in household (moderate)</li>
+                                </ul>
+
+                            </div>
+
                         </ul>
 
                     </div>
 
+                </div>
 
 
-                    <h4 class="component-title">Component 1:</h4>
-
-                    <div class="bullet-list">
-
-                        <p class="charge-signs">Positive</p>
-                        <ul>
-                            <li>Household income (strong)</li>
-                            <li>Partner's mother education (strong)</li>
-                        </ul>
 
 
-                        <p class="charge-signs">Negative</p>
-                        <ul>
-                            <li>Number of minors in household (moderate)</li>
-                        </ul>
-
-                    </div>
-
-                </ul>
 
 
                 <!-- SCATTER VIS -->
@@ -419,36 +466,45 @@
 
                 <!-- TEXT INTERPRET -->
 
-                <p>
-                    As shown above, there seems to be yellow and blue dots all over the plot.
+                <div class="collapsable">
+                    <button class="toggle-btn">Text - ↓↑</button>
 
-                    <br><br>
+                    <p class="toggle-txt hidden">
+                        As shown above, there seems to be yellow and blue dots all over the plot.
 
-                    While the areas at the bottom and at the right have less blue dots, it seems there are just less
-                    dots there overall, so nothing can be said there.
+                        <br><br>
 
-                    <br><br>
+                        While the areas at the bottom and at the right have less blue dots, it seems there are just less
+                        dots there overall, so nothing can be said there.
 
-                    Interestingly, the far top and far left areas have few blue dots but still a decent amount of
-                    yellow dots!
+                        <br><br>
 
-                    <br><br>
+                        Interestingly, the far top and far left areas have few blue dots but still a decent amount of
+                        yellow dots!
 
-                    Using the heatmap of component 1 for interpretation, it seems cases at the far top of this
-                    scatterplot have subjects of higher household income, more education, and slightly
-                    less children living at home. (The feature here was for the partner's mother's education, but as
-                    seen with the correlations in the other notebooks, the education levels of the subject, partner, and
-                    their mothers all have some correlation.)
+                        <br><br>
 
-                    <br><br>
+                        Using the heatmap of component 1 for interpretation, it seems cases at the far top of this
+                        scatterplot have subjects of higher household income, more education, and slightly
+                        less children living at home. (The feature here was for the partner's mother's education, but as
+                        seen with the correlations in the other notebooks, the education levels of the subject, partner,
+                        and
+                        their mothers all have some correlation.)
 
-                    Using the heatmap of component 0 for interpretation, cases at the far left of this scatterplot have
-                    subjects of more education, less children living at home, and older age. (The feature
-                    here was for the partner's age, but as seen with the correlations in the other notebooks, subjects
-                    tended to be in relationships with partners of similar age.)
+                        <br><br>
 
-                    <br><br>
-                </p>
+                        Using the heatmap of component 0 for interpretation, cases at the far left of this scatterplot
+                        have
+                        subjects of more education, less children living at home, and older age. (The feature
+                        here was for the partner's age, but as seen with the correlations in the other notebooks,
+                        subjects
+                        tended to be in relationships with partners of similar age.)
+
+                        <br><br>
+                    </p>
+                </div>
+
+
 
                 <div class="bullet-list">
                     <ul>
@@ -694,7 +750,7 @@
         <script type="module" src="main-heatmap.js"></script>
         <script type="module" src="main-scatter.js"></script>
         <script type="module" src="notebook-switcher.js"></script>
-        <!-- <script type="module" src="tooltip.js"></script> -->
+        <script type="module" src="toggle-text.js"></script>
 
     </div>
 
