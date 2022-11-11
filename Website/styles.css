@@ -187,12 +187,16 @@ h2 {
 }
 
 #dropdown {
-    font-size: 2.35rem;
+    font-size: 2.5rem;
     text-align: center;
     width: 100%;
     border: #333333 2px solid;
     font-weight: bold;
-    padding: .8rem 0;
+    padding: 1.85rem 0;
+    border-radius: 1rem;
+    color: rgb(184, 106, 119);
+    border-color: rgb(180, 89, 104);
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
 
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -205,6 +209,9 @@ h2 {
 
 #dropdown option {
     font-size: 1rem;
+    text-align: center;
+    border-radius: 1rem;
+    padding: 1rem;
 }
 
 .vis {
@@ -329,15 +336,29 @@ tbody tr:not([highlight]) {
 
 .toggle-btn {
     width: 100%;
-    font-size: 2.5rem;
+    font-size: 2rem;
+    color: rgb(139, 86, 86);
+    background-color: rgba(221, 221, 221, 0.671);
     padding: 1rem;
+    border-radius: 2rem;
+    font-weight: bold;
+    position: relative;
+    border: none;
 }
 
 .collapsable {
-    border-color: black;
-    border-style: solid;
-    border-width: 3px;
+    border: none;
     background-color: rgb(245, 245, 245);
-    margin: 1rem 1rem 3rem 1rem;
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
+    margin: 3rem 1rem 4rem 1rem;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
+    border-radius: 2rem;
+}
+
+.show-hide {
+    font-size: 1.5rem;
+    opacity: 0.65;
+    position: absolute;
+    /* right: 2.25rem; */
+    left: 1.35rem;
+    top: 1.35rem;
 }
