@@ -84,6 +84,22 @@ p {
     border: 2px #DDD dotted;
 }
 
+.super-text2 .bullet-list,
+.bullet-list.pca-findings {
+    font-size: 1.5rem;
+    line-height: 2.15;
+}
+
+.bullet-list h4 {
+    font-size: 2.5rem;
+    color: rgb(48, 48, 48);
+    margin: 1rem auto;
+}
+
+.bullet-list .bold {
+    color: rgb(88, 88, 88);
+}
+
 @media screen and (min-width: 1080px) {
 
     /* For laptop and desktop sizes */
