@@ -68,7 +68,7 @@ li {
 p,
 .bullet-list {
     line-height: 1.65;
-    color: #444;
+    color: rgb(34, 34, 34);
 }
 
 
@@ -82,7 +82,7 @@ p,
     width: 50rem;
     margin: 3rem auto;
     padding: 1.85rem;
-    font-size: 1.35rem;
+    font-size: 1rem;
     border: 5px #BBB dotted;
 }
 
@@ -100,6 +100,11 @@ p,
 
 .bullet-list .bold {
     color: rgb(88, 88, 88);
+}
+
+#interpreting-heatmap .bullet-list ul {
+    font-size: .85rem;
+    line-height: .85rem;
 }
 
 @media screen and (min-width: 1080px) {
@@ -341,6 +346,8 @@ tbody tr:not([highlight]) {
 
 .charge-signs {
     font-weight: bold;
+    padding: 0;
+    font-size: 1rem;
 }
 
 #return-link {
@@ -372,6 +379,8 @@ tbody tr:not([highlight]) {
 
 .ital {
     font-style: italic;
+    /* color: black; */
+    font-weight: bold;
 }
 
 .bold {
