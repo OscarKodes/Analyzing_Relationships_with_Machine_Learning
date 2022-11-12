@@ -35,9 +35,6 @@ selectMenu.addEventListener("change", (event) => {
 
         // update all the text related elements
         updateNotebookText(selectedNotebook);
-
-        // change the notebook link based on selected notebook
-        notebookLink.href = links[selectedNotebook];
     }
 
     
@@ -71,6 +68,9 @@ const updateNotebookText = (notebook) => {
 
     // turn selected on
     switchElements(elementArr[notebook - 1], true);
+
+    // change the notebook link based on selected notebook
+    notebookLink.href = links[notebook];
 }
 
 // Initially show just notebook 1

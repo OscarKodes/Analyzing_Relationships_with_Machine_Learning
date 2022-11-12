@@ -4,8 +4,19 @@
     <meta charset="utf-8">
     <title>Exploring Relationships with Machine Learning</title>
 
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,700;1,400&family=Maven+Pro&display=swap"
+        rel="stylesheet">
+
     <!-- Local CSS -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 </head>
 
@@ -19,13 +30,13 @@
 
             <h1>Exploring Relationships with Machine Learning</h1>
 
-            <p class="by-line">
-                By <a href="https://www.oscarko.net">Oscar Ko</a>
+            <p class="by-line my-link">
+                By <a href="https://www.oscarko.net" target="_blank">Oscar Ko</a>
             </p>
 
             <div id="cover-img">
                 <img src="cover.png" alt="Cover image. Couple sitting on bench.">
-                <a id="photo-src" href="https://unsplash.com/photos/wHaQ4XJ9SgY">
+                <a id="photo-src" href="https://unsplash.com/photos/wHaQ4XJ9SgY" target="_blank">
                     Photo from Marc A.
                 </a>
             </div>
@@ -61,7 +72,8 @@
                 <p class="hidden toggle-txt">
 
                     This dataset was taken from a Stanford University survey called, "<a
-                        href="https://data.stanford.edu/hcmst2017">How Couples Meet and Stay Together 2017</a>." This
+                        href="https://data.stanford.edu/hcmst2017" target="_blank">How Couples Meet and Stay Together
+                        2017</a>." This
                     dataset contains many variables including age, education level, political party, income, usage of
                     dating
                     apps, and quality of relationship (as self-rated by the subject). To prepare this data for analysis,
@@ -86,8 +98,12 @@
                     <br><br>
 
                     All the specific cleaning steps I took can be seen in
-                    this <a href="">Jupyter notebook</a>. During the cleaning process, I also consulted this <a
-                        href="https://stacks.stanford.edu/file/druid:vt073cc9067/HCMST_2017_fresh_Codeboodk_v1.1a.pdf">codebook</a>.
+                    this <a
+                        href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/0%20-%20Initial%20Data%20Preparation.ipynb"
+                        target="_blank">Jupyter notebook</a>. During the cleaning process, I also consulted
+                    this <a
+                        href="https://stacks.stanford.edu/file/druid:vt073cc9067/HCMST_2017_fresh_Codeboodk_v1.1a.pdf"
+                        target="_blank">codebook</a>.
                 </p>
 
             </div>
@@ -149,7 +165,8 @@
                     strongest correlations with each
                     other based on the
                     correlation matrix conducted in the <a
-                        href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/1%20-%20Exploratory%20Analysis%20.ipynb">
+                        href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/1%20-%20Exploratory%20Analysis%20.ipynb"
+                        target="_blank">
                         EDA notebook</a>.
                 </p>
                 <p class="super-text1 n2">
@@ -157,7 +174,8 @@
                     correlations with relationship quality
                     ratings based
                     on the correlation matrix conducted in the <a
-                        href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/1%20-%20Exploratory%20Analysis%20.ipynb">EDA
+                        href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/1%20-%20Exploratory%20Analysis%20.ipynb"
+                        target="_blank">EDA
                         notebook</a>.
                 </p>
                 <p class="super-text1 n3">
@@ -166,7 +184,8 @@
                     statistically insignificant features (where their alpha levels were over p = .05). The specific
                     steps I took
                     can be found in the <a
-                        href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/2%20-%20Classification.ipynb">classification
+                        href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/2%20-%20Classification.ipynb"
+                        target="_blank">classification
                         notebook</a>.
                 </p>
                 <p class="super-text1 n4">
@@ -174,7 +193,8 @@
                     elimination to remove all features that were statistically insignificant (where their alpha levels
                     were over p = .05). The specific steps I took
                     can be found in the <a
-                        href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/3%20-%20Regression.ipynb">regression
+                        href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/3%20-%20Regression.ipynb"
+                        target="_blank">regression
                         notebook</a>.
                 </p>
 
@@ -305,8 +325,8 @@
                     </div>
                 </div>
 
-                <a id="notebook-link" href="">Link
-                    to the selected notebook</a>
+                <a class="bottom-notebook-link" id="notebook-link" href="" target="_blank">Open selected notebook on
+                    Github</a>
             </div>
 
 
@@ -536,11 +556,18 @@
                     </ul>
                 </div>
 
-                <a id="notebook-link">Link to the selected notebook</a>
+                <a class="bottom-notebook-link"
+                    href="https://github.com/OscarKodes/Analyzing_Relationships_with_Machine_Learning/blob/main/4%20-%20Unsupervised.ipynb"
+                    target="_blank">Selected
+                    notebook on Github</a>
             </div>
 
 
-            <a id="return-link" href="#notebook-vis">Return to Dropdown List</a>
+            <a id="return-link" href="#notebook-vis">
+                <i id="arrow1" class="fas fa-arrow-up"></i>
+                Return to dropdown
+                <i id="arrow2" class="fas fa-arrow-up"></i>
+            </a>
 
         </div>
 
@@ -729,9 +756,14 @@
 
 
                 <br><br>
-                "I've learned that you can't predict or plan for it. For someone like me who is obsessed with
-                organization and planning, I love the idea that love is the one exception to that. Love is the one wild
-                card." - Taylor Swift
+
+                <span id="quote">
+                    "I've learned that you can't predict or plan for it. For someone like me who is obsessed with
+                    organization and planning, I love the idea that love is the one exception to that. Love is the one
+                    wild
+                    card." - Taylor Swift
+                </span>
+
 
 
             </p>
@@ -739,8 +771,8 @@
         </div>
 
 
-        <div id="bottom-link">
-            <a href="https://www.oscarko.net">www.OscarKo.net</a>
+        <div id="bottom-link" class="my-link">
+            <a href="https://www.oscarko.net" target="_blank">www.OscarKo.net</a>
         </div>
 
 
