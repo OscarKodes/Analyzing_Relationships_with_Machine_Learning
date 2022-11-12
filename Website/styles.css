@@ -88,8 +88,8 @@ p,
 
 .super-text2 .bullet-list,
 .bullet-list.pca-findings {
-    font-size: 1.85rem;
-    line-height: 1.85;
+    font-size: 2rem;
+    line-height: 1.5;
 }
 
 .super-text2 li {
@@ -116,8 +116,8 @@ p,
 }
 
 #interpreting-heatmap .bullet-list ul {
-    font-size: .85rem;
-    line-height: .85rem;
+    font-size: 1.35rem;
+    line-height: 1.15;
 }
 
 @media screen and (min-width: 1080px) {
@@ -390,12 +390,13 @@ tbody tr:not([highlight]) {
 
 .component-title {
     text-align: center;
+    font-size: 1.8rem;
 }
 
 .charge-signs {
     font-weight: bold;
     padding: 0;
-    font-size: 1rem;
+    font-size: 1.45rem;
 }
 
 @media screen and (min-width: 1080px) {
