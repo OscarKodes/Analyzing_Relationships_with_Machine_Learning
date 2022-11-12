@@ -92,6 +92,15 @@ p,
     line-height: 1.85;
 }
 
+@media screen and (min-width: 1080px) {
+
+    /* For laptop and desktop sizes */
+    .super-text2 .bullet-list,
+    .bullet-list.pca-findings {
+        font-size: 2.15rem;
+    }
+}
+
 .bullet-list h4 {
     font-size: 2.5rem;
     color: rgb(48, 48, 48);
@@ -111,11 +120,20 @@ p,
 
     /* For laptop and desktop sizes */
     .bullet-list {
-        width: 50rem;
+        width: 100rem;
         margin: 0 auto 2rem;
-        padding: 1rem;
-        font-size: 2rem;
+        padding: 5rem;
+        font-size: 2.35rem;
         border: 2px #DDD dotted;
+    }
+
+    #interpreting-heatmap .bullet-list ul {
+        font-size: 2.15rem;
+        margin: 0;
+    }
+
+    #interpreting-heatmap .bullet-list {
+        width: 50rem;
     }
 }
 
@@ -243,9 +261,25 @@ h2 {
     padding: 1rem;
 }
 
+@media screen and (min-width: 1080px) {
+
+    /* For laptop and desktop sizes */
+    #dropdown option {
+        font-size: 2.5rem;
+    }
+}
+
 .vis {
     text-align: center;
     margin: 4rem 0;
+}
+
+@media screen and (min-width: 1080px) {
+
+    /* For laptop and desktop sizes */
+    .vis h3 {
+        font-size: 3rem;
+    }
 }
 
 #heatmap-vis.vis {
@@ -261,6 +295,18 @@ h2 {
 
 #bottom-link.my-link a {
     color: rgba(255, 255, 255, 0.795);
+}
+
+@media screen and (min-width: 1080px) {
+
+    /* For laptop and desktop sizes */
+    .by-line {
+        font-size: 2.15rem;
+    }
+
+    #title h1 {
+        font-size: 4rem;
+    }
 }
 
 a {
@@ -334,8 +380,6 @@ tbody tr:not([highlight]) {
 .tippy-tooltip {
     font-size: 2rem;
     border-radius: 1rem;
-    /* border: 2px grey solid; */
-    /* background-color: #181818f8; */
     box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
     padding: 1.35rem;
 }
@@ -348,6 +392,19 @@ tbody tr:not([highlight]) {
     font-weight: bold;
     padding: 0;
     font-size: 1rem;
+}
+
+@media screen and (min-width: 1080px) {
+
+    /* For laptop and desktop sizes */
+    .component-title {
+        font-size: 2.5rem;
+    }
+
+    .charge-signs {
+        font-size: 2.25rem;
+        margin: 0;
+    }
 }
 
 #return-link {
@@ -375,6 +432,15 @@ tbody tr:not([highlight]) {
     position: absolute;
     right: 4rem;
     opacity: .25;
+}
+
+@media screen and (min-width: 1080px) {
+
+    /* For laptop and desktop sizes */
+    #return-link {
+        font-size: 2.35rem;
+        margin: 5rem 20rem;
+    }
 }
 
 .ital {
@@ -407,6 +473,14 @@ tbody tr:not([highlight]) {
     border-radius: 2rem;
 }
 
+@media screen and (min-width: 1080px) {
+
+    /* For laptop and desktop sizes */
+    .collapsable {
+        margin: 9rem 10rem;
+    }
+}
+
 .show-hide {
     font-size: 1.5rem;
     opacity: 0.65;
@@ -421,15 +495,20 @@ tbody tr:not([highlight]) {
 }
 
 a.bottom-notebook-link {
-    /* background-color: lavender; */
     display: block;
-    text-align: right;
-    margin-right: 2.65rem;
+    text-align: center;
     font-size: .75rem;
 }
 
-#quote {
-    color: rgb(179, 102, 115);
-    font-family: 'Maven Pro', sans-serif;
+@media screen and (min-width: 1080px) {
 
+    /* For laptop and desktop sizes */
+    a.bottom-notebook-link {
+        font-size: 2rem;
+        margin: 5rem;
+    }
+}
+
+#quote p {
+    color: rgb(139, 94, 101);
 }
