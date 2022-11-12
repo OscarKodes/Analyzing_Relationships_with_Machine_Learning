@@ -67,6 +67,7 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
       .style("font-size", "2rem")
       .call(yAxis);
 
+
     
 
     // Draw SVG Scatterplot ==========================================
@@ -160,6 +161,28 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
             .attr("r", isMobile ? 8 : 6)
       }
     });
+
+
+    // ============================================
+    // TOOLTIPS
+
+    // set default arrows on tool tips
+    tippy.setDefaults({
+      "arrow": true
+    })
+
+    // set the tooltip content
+    circles
+      .attr("data-tippy-content", d => {
+
+        return `(${d.comp0.toFixed(2)}, ${d.comp1.toFixed(2)})`
+      })
+
+
+    // call tippy on the circles
+    tippy(circles.nodes());
+
+
 });
 
 
