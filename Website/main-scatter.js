@@ -70,7 +70,7 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
     
 
     // Draw SVG Scatterplot ==========================================
-    svg.selectAll("circle.dot")
+    const circles = svg.selectAll("circle.dot")
         .data(
             data.sort((a, b) => b.relationshipQuality_isGood - a.relationshipQuality_isGood), 
             d => d.id)
@@ -80,16 +80,15 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
                 .attr("class", "dot")
                 .attr("transform", d => `translate(${xScale(d.comp0) }, 
                                         ${yScale(d.comp1)})`)
-                )
                 .attr("fill", d => colorScale(d.relationshipQuality_isGood))
                 .attr("stroke", "black")
                 .attr("stroke-width", "1px")
                 .attr("fill-opacity", ".65")
                 .attr("r", d => d.relationshipQuality_isGood ? isMobile ? 8 : 6 : 0)
-            .call(enter => enter.transition()
-                .delay(5000)
-                .duration(5000)
-                .attr("r", isMobile ? 8 : 6)
+            // .call(enter => enter.transition()
+                // .delay(5000)
+                // .duration(5000)
+                // .attr("r", isMobile ? 8 : 6)
                 ,
             update => update,
             exit => exit
@@ -138,12 +137,29 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
       .data(["'Not good'", "'Good'"])
       .join("text")
       .attr("class", "legend-label")
-      .attr("x", d => width - margin.left * 2)
+      .attr("x", width - margin.left * 2)
       .attr("y", (_, i) => (isMobile? 107 : 80) + i * (isMobile ? 50 : 35))
       .text(d => d)
       .style("font-size", "2rem")
       .style("font-family", "monospace")
       .attr("alignment-baseline","middle")
+
+
+    // ============================================
+    // ANIMATION WHEN DROPDOWN CHANGES
+    const dropdown = document.getElementById("dropdown");
+
+    dropdown.addEventListener("change", (event) => {
+
+      if (+event.target.value === 5) {
+
+        circles
+          .transition()
+            .delay(2200)
+            .duration(3300)
+            .attr("r", isMobile ? 8 : 6)
+      }
+    });
 });
 
 

@@ -96,10 +96,10 @@ d3.csv('data_to_visualize/5-unsupervised_component_0_1.csv', d3.autoType)
                         .attr("fill", colorScale(0))
                         // .attr("transform", `translate(${margin.left + xScale(0)}, 0)`)
                         .attr("stroke", "black")
-                      .call(enter =>  enter.transition()
-                        .delay(5000)
-                        .duration(2000)
-                        .attr("fill", d => colorScale(d.score)))
+                        // .call(enter =>  enter.transition()
+                        //   .delay(5000)
+                        //   .duration(2000)
+                        //   .attr("fill", d => colorScale(d.score)))
                       ,
                       update => update,
                       exit => exit
@@ -156,6 +156,26 @@ d3.csv('data_to_visualize/5-unsupervised_component_0_1.csv', d3.autoType)
 
 
     // ============================================
+    // ANIMATION WHEN DROPDOWN CHANGES
+    const dropdown = document.getElementById("dropdown");
+
+    dropdown.addEventListener("change", (event) => {
+
+      if (+event.target.value === 5) {
+
+        boxes
+          .transition()
+            .delay(300)
+            .duration(2000)
+            .attr("fill", d => colorScale(d.score))
+      }
+    });
+                        
+    
+
+
+    // ============================================
+    // TOOLTIPS
 
     // set default arrows on tool tips
     tippy.setDefaults({
