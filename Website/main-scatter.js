@@ -15,25 +15,37 @@ const margin = {
   right: 55
 };
 
+const state = {
+  data: [],
+  selected: "all"
+}
+
+let svg,
+xScale,
+yScale,
+allColors,
+colorScale;
+
 
 d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
     .then(data => {
 
+    state.data = data
 
     // SCALES =================================================
 
-    const xScale = d3.scaleLinear()
+    xScale = d3.scaleLinear()
         .domain([-4, 4])
         .range([0, width - margin.right * 3])
         .nice()
 
-    const yScale = d3.scaleLinear()
+    yScale = d3.scaleLinear()
         .domain([-4, 4])
         .range([height - margin.top, margin.top]);
 
-    const allColors = ["blue", "yellow"];
+    allColors = ["blue", "yellow"];
 
-    const colorScale = d3.scaleLinear()
+    colorScale = d3.scaleLinear()
         .domain([0, 1])
         .range(allColors)
 
@@ -46,7 +58,7 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
 
 
     // CREATE MAIN SVG ELEMENT ==================================
-    const svg = d3.select("#scatter-vis")
+    svg = d3.select("#scatter-vis")
       .append("svg")
       .attr("width", width)
       .attr("height", height)
@@ -71,30 +83,7 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
     
 
     // Draw SVG Scatterplot ==========================================
-    const circles = svg.selectAll("circle.dot")
-        .data(
-            data.sort((a, b) => b.relationshipQuality_isGood - a.relationshipQuality_isGood), 
-            d => d.id)
-        .join(
-            enter => enter
-            .append("circle")
-                .attr("class", "dot")
-                .attr("transform", d => `translate(${xScale(d.comp0) }, 
-                                        ${yScale(d.comp1)})`)
-                .attr("fill", d => colorScale(d.relationshipQuality_isGood))
-                .attr("stroke", "black")
-                .attr("stroke-width", "1px")
-                .attr("fill-opacity", ".65")
-                .attr("r", d => d.relationshipQuality_isGood ? isMobile ? 8 : 6 : 0)
-            // .call(enter => enter.transition()
-                // .delay(5000)
-                // .duration(5000)
-                // .attr("r", isMobile ? 8 : 6)
-                ,
-            update => update,
-            exit => exit
-                .remove()
-        );
+    
 
                         // yAxis title
     svg.append("text")
@@ -118,14 +107,24 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
                 height - margin.top / 3)
     .style("font-weight", "bold")
     .style("font-size", isMobile ? "2.2rem" : "2.5rem")
-    .text("Component 0");
+    .text("Component 0")
+
+
+    // Title for Legend
+    svg.append("text")
+      .text("Click to Filter")
+      .attr("x", width - margin.left * 2 + (isMobile ? -57 : -55))
+      .attr("y", isMobile? 70 : 55)
+      .style("font-size", "2rem")
+      // .style("font-weight", "bold")
+      .attr("fill", "grey")
 
     // Color dots for Legend
     svg.selectAll(".legend")
       .data(allColors)
       .join("circle")
       .attr("class", "legend-dot")
-      .attr("cx", width - margin.left * 2.5 + 20)
+      .attr("cx", width - margin.left * 2.5)
       .attr("cy", (_, i) => (isMobile? 105 : 80) + i * (isMobile ? 50 : 35))
       .attr("r", isMobile ? 13 : 10)
       .style("fill", d => d)
@@ -138,7 +137,7 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
       .data(["'Not good'", "'Good'"])
       .join("text")
       .attr("class", "legend-label")
-      .attr("x", width - margin.left * 2)
+      .attr("x", width - margin.left * 2 - 20)
       .attr("y", (_, i) => (isMobile? 107 : 80) + i * (isMobile ? 50 : 35))
       .text(d => d)
       .style("font-size", "2rem")
@@ -148,22 +147,81 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
 
     // ============================================
     // ANIMATION WHEN DROPDOWN CHANGES
-    const dropdown = document.getElementById("dropdown");
+    const selectLabel = d3.selectAll(".legend-label");
+    const selectDot = d3.selectAll(".legend-dot");
 
-    dropdown.addEventListener("change", (event) => {
+    // Listen for clicks on Genres or Colors
+    selectLabel.on("click", (_, d) => updateSelection(d));
+    selectDot.on("click", (_, d) => updateSelection(d));
 
-      if (+event.target.value === 5) {
+    // Update selected genre and call draw
+    const updateSelection = (d) => {
 
-        circles
-          .transition()
-            .delay(2200)
-            .duration(3300)
-            .attr("r", isMobile ? 8 : 6)
-      }
-    });
+      console.log(d)
+      let arr1 = ["'Not good'", "'Good'"];
+      let arr2 = ["blue", "yellow"];
+      let selected = arr1.includes(d) ?
+                      arr1.indexOf(d) :
+                      arr2.indexOf(d)
+
+      state.selected = selected === state.selected ? "all" : selected;
+
+      draw();
+    }
 
 
-    // ============================================
+    draw();
+});
+
+
+// DRAW FUNCTION ####################################################
+function draw() {
+
+  // Filter wanted data based on current state
+  let filteredData = state.data
+        .filter(d => state.selected === "all" || state.selected === d.relationshipQuality_isGood);
+
+
+  // Draw SVG Scatterplot ==========================================
+  const circles = svg.selectAll("circle.dot")
+        .data(
+            filteredData.sort((a, b) => b.relationshipQuality_isGood - a.relationshipQuality_isGood), 
+            d => d.id)
+        .join(
+            enter => enter
+            .append("circle")
+                .attr("class", "dot")
+                .attr("transform", d => `translate(${xScale(d.comp0) }, 
+                                        ${yScale(d.comp1)})`)
+                .attr("fill", d => colorScale(d.relationshipQuality_isGood))
+                .attr("stroke", "black")
+                .attr("stroke-width", "2px")
+                .attr("fill-opacity", "1")
+                .attr("r", isMobile ? 8 : 6)
+                .call(enter => enter.transition()
+                    .duration(2000)
+                    .attr("fill-opacity", ".65")
+                    .attr("stroke-width", "1px"))
+                    ,
+            update => update
+              .attr("fill-opacity", "1")
+              .attr("stroke-width", "2px")
+              .call(update => update.transition()
+                .duration(800)
+                .attr("fill-opacity", ".65")
+                .attr("stroke-width", "1px"))
+                ,
+            exit => exit
+              .call(exit => exit.transition()
+                .duration(800)
+                .attr("r", 0)
+                .remove())
+        );
+        
+
+
+
+        // ============================================
     // TOOLTIPS
 
     // set default arrows on tool tips
@@ -181,9 +239,7 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
 
     // call tippy on the circles
     tippy(circles.nodes());
-
-
-});
+}
 
 
 
