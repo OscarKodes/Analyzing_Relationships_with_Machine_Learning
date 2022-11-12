@@ -165,8 +165,8 @@ d3.csv('data_to_visualize/5-unsupervised_component_0_1.csv', d3.autoType)
 
         boxes
           .transition()
-            .delay(300)
-            .duration(2000)
+            .delay(100)
+            .duration(1000)
             .attr("fill", d => colorScale(d.score))
       }
     });
