@@ -62,7 +62,7 @@ const ToolTipText = {
     "4-metAs_workNeighbors_yes": "Subjects that met their partners as working neighbors were more likely to rate their relationships as 'good.'",
     "4-metIn_school_yes":  "Subjects that met their partners in school were more likely to rate their relationships as 'good.'",
     "4-partnerRace_Asian or Pacific Islander": "In this model, for this specific dataset, subjects that had Asian or Pacific Islander partners were more likely to rate their relationships as 'good.'",
-    "4-partnerRace_White": "In this model, for this specific dataset, subjects that had White partners were more likely to rate their relationships as 'good.'",
+    "4-partnerRace_White": "In this model, for this specific dataset, subjects that had white partners were more likely to rate their relationships as 'good.'",
     "4-sexFrequency_3 to 6 times a week": "Subjects who had sex with their partners 3 to 6 times a week were more likely to rate their relationships as 'good.'",
     "4-sexFrequency_Once a month or less": "Subjects who had sex with their partners once a month or less were less likely to rate their relationships as 'good.'",
     "4-sexFrequency_Once or twice a week": "Subjects who had sex with their partners 1 to 2 times a week were more likely to rate their relationships as 'good.'",
