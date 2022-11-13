@@ -101,7 +101,7 @@ p,
     /* For laptop and desktop sizes */
     .super-text2 .bullet-list,
     .bullet-list.pca-findings {
-        font-size: 2.15rem;
+        font-size: 2.5rem;
     }
 }
 
@@ -132,7 +132,7 @@ p,
     }
 
     #interpreting-heatmap .bullet-list ul {
-        font-size: 2.15rem;
+        font-size: 2.5rem;
         margin: 0;
     }
 
@@ -403,11 +403,11 @@ tbody tr:not([highlight]) {
 
     /* For laptop and desktop sizes */
     .component-title {
-        font-size: 2.5rem;
+        font-size: 2.65rem;
     }
 
     .charge-signs {
-        font-size: 2.25rem;
+        font-size: 2.45rem;
         margin: 0;
     }
 }
