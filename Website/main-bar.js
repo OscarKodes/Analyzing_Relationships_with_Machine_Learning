@@ -321,7 +321,8 @@ function draw() {
     svg.append("text")
       .attr("y", isMobile ? 
                   margin.top / 3 :
-                  100)
+                  +state.notebook === 1 ?
+                  185 : 100)
       .attr("x", isMobile ? 
                   -margin.left * 3.5 - (state.notebook > 1 ? 180 : 0) :
                   -400)
