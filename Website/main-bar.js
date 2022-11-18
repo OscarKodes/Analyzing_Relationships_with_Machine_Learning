@@ -170,6 +170,7 @@ function draw() {
     .transition()
     .duration(500)
     .attr("transform", `translate(${margin.left}, ${height - margin.top})`)
+    .style("font-family", "garamound")
     .call(d3.axisBottom(xScale))// need to update the scale
 
 

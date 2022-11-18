@@ -71,12 +71,14 @@ d3.csv('data_to_visualize/6-unsupervised_scatter.csv', d3.autoType)
     svg.append("g")
       .attr("transform", `translate(${margin.left}, ${height - margin.top})`)
       .style("font-size", "2rem")
+      .style("font-family", "garamound")
       .call(xAxis);
 
     // yAxis ticks
     svg.append("g")
       .attr("transform", `translate(${margin.left}, 0)`)
       .style("font-size", "2rem")
+      .style("font-family", "garamound")
       .call(yAxis);
 
 
