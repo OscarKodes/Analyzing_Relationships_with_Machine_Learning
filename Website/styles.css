@@ -489,6 +489,10 @@ tbody tr:not([highlight]) {
         margin: 9rem 10rem;
         padding-bottom: 1.85rem;
     }
+
+    .no-padding {
+        padding: 0;
+    }
 }
 
 .show-hide {
