@@ -222,7 +222,7 @@ h2 {
 
     /* For laptop and desktop sizes */
     .section {
-        box-shadow: 0 1rem 1.5rem 0 #333333;
+        box-shadow: 0 .5rem 1.2rem 0 #33333393;
         margin-bottom: 5rem;
     }
 }
@@ -483,6 +483,7 @@ tbody tr:not([highlight]) {
     /* For laptop and desktop sizes */
     .collapsable {
         margin: 9rem 10rem;
+        padding-bottom: 1.85rem;
     }
 }
 
